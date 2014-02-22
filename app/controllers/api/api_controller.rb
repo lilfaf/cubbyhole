@@ -16,7 +16,7 @@ class Api::ApiController < ActionController::Metal
   include Doorkeeper::Helpers::Filter
 
   prepend_view_path File.join(Rails.root, 'app', 'views')
-  append_view_path ::File.expand_path('../../../views/api', __FILE__)
+  append_view_path File.expand_path('../../../views/api', __FILE__)
 
   self.responder = ApiResponder
 
@@ -35,6 +35,11 @@ class Api::ApiController < ActionController::Metal
 
   def not_found
     render 'errors/not_found', status: :not_found
+  end
+
+  def invalid_record!(record)
+    @record = record
+    render 'api/errors/invalid_record', status: :unprocessable_entity
   end
 
   def parameter_missing

@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
 
   has_many :folders
-  has_many :c_files
 
   validates :username,
     presence: true,

@@ -49,6 +49,11 @@ module ApiControllerHelper
     expect(response.status).to eq(404)
     expect(json_response['message']).to eq('The entry could not be found.')
   end
+
+  def assert_invalid_record!
+    expect(response.status).to eq(422)
+    expect(json_response['message']).to eq('Invalid record. Please fix errors and try again.')
+  end
 end
 
 RSpec.configure do |config|

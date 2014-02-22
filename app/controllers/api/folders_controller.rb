@@ -7,12 +7,11 @@ class Api::FoldersController < Api::ApiController
   end
 
   def create
-    @folder = Folder.new(allowed_folder_params)
-    @folder.user = current_user
+    @folder = current_user.folders.new(allowed_folder_params)
     if @folder.save
       respond_with(@folder, status: 201, default_template: :show)
     else
-      invalid_record!
+      invalid_record!(@folder)
     end
   end
 

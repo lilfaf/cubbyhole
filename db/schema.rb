@@ -11,23 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140219190353) do
+ActiveRecord::Schema.define(version: 20140221173923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "entries", force: true do |t|
-    t.string   "name",       null: false
-    t.string   "type"
+  create_table "file_items", force: true do |t|
+    t.string   "name"
     t.string   "href"
+    t.integer  "folder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "folders", force: true do |t|
+    t.string   "name"
     t.string   "ancestry"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "entries", ["ancestry"], name: "index_entries_on_ancestry", unique: true, using: :btree
-  add_index "entries", ["user_id"], name: "index_entries_on_user_id", using: :btree
+  add_index "folders", ["ancestry"], name: "index_folders_on_ancestry", unique: true, using: :btree
+  add_index "folders", ["user_id"], name: "index_folders_on_user_id", using: :btree
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id", null: false

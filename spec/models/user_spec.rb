@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe User do
+  it { should have_db_column(:username) }
   it { should have_many(:folders) }
 
   it { should validate_presence_of :username }
