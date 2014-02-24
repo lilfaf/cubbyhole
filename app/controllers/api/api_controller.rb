@@ -34,7 +34,7 @@ class Api::ApiController < ActionController::Metal
   end
 
   def not_found
-    render 'errors/not_found', status: :not_found
+    render 'errors/record_not_found', status: :not_found
   end
 
   def invalid_record!(record)

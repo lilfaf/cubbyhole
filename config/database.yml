@@ -50,6 +50,7 @@ test:
   pool: 5
   username:
   password:
+  prepared_statements: false
 
 production:
   adapter: postgresql
