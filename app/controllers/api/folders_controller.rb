@@ -21,8 +21,6 @@ class Api::FoldersController < Api::ApiController
 
     @folder = current_user.folders.new(params_hash)
     if @folder.save
-      puts @folder.errors[:parent]
-      #puts @folder.errors.empty?
       respond_with(@folder, status: 201, default_template: :show)
     else
       invalid_record!(@folder)
@@ -41,7 +39,6 @@ class Api::FoldersController < Api::ApiController
   private
 
   def load_folder
-    #puts current_user.folders.where(id: params[:id]).exists?
     param_id = params[:id].to_i
     param_id = current_user.root_folder.id if param_id == 0
     @folder ||= current_user.folders.find(param_id)
