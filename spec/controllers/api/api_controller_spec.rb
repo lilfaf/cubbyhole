@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Api::ApiController do
   controller(Api::ApiController) do
     def index
-      render json: { message: 'greetings' }
+      render text: 'greetings'
     end
   end
 
@@ -11,7 +11,7 @@ describe Api::ApiController do
     it "can make a request" do
       api_get :index
       expect(response.status).to eq(200)
-      expect(json_response['message']).to eq('greetings')
+      expect(response.body).to eq('greetings')
     end
   end
 

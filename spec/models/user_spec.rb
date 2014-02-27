@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe User do
   it { should have_db_column(:username) }
+
   it { should have_many(:folders) }
   it { should have_one(:root_folder) }
 
@@ -18,11 +19,11 @@ describe User do
   it "should create user's root folder" do
     user = build(:user)
     expect{ user.save }.to change{ Folder.count }.by(1)
-    expect(Folder.all.last).to eq(user.root_folder)
-    expect(Folder.all.last.root?).to eq(true)
+    expect(user.folders.last).to eq(user.root_folder)
+    expect(user.folders.last.root?).to eq(true)
   end
 
-  it "should delete dependent root folder" do
+  it "should delete dependent folder" do
     user = create(:user)
     expect{ user.destroy }.to change{ Folder.count }.by(-1)
   end

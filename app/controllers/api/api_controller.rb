@@ -8,7 +8,7 @@ class Api::ApiController < ActionController::Metal
 
   include ActionController::Head
   include ActionController::Rendering
-  include ActionController::Renderers::All
+  include ActionController::ImplicitRender
   include ActionController::MimeResponds
   include ActionController::Rescue
   include ActionController::StrongParameters
@@ -19,11 +19,10 @@ class Api::ApiController < ActionController::Metal
   append_view_path File.expand_path('../../../views/api', __FILE__)
 
   self.responder = ApiResponder
+  respond_to :json
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActionController::ParameterMissing, with: :parameter_missing
-
-  respond_to :json
 
   doorkeeper_for :all
 

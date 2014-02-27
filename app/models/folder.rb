@@ -1,32 +1,32 @@
-require 'validators/ancestry_uniqueness'
-
 class Folder < ActiveRecord::Base
-  ROOT_NAME = 'root'
+  ROOT_FOLER_NAME = 'cubbyhole_root_folder'
 
-  has_ancestry
+  acts_as_nested_set
 
   has_many :file_items, dependent: :destroy
   belongs_to :user
 
   validates :name,
     presence: true,
-    ancestry_uniqueness: true
+    exclusion: %w(ROOT_FOLER_NAME),
+    uniqueness: {
+      scope: :parent_id,
+      case_sensitive: false
+    }
 
-  validate :ensure_valid_parent, unless: -> { is_root? }
+  validates :parent_id,
+    presence: true,
+    unless: -> { is_root? }
 
   before_destroy :prevent_root_deletion
 
   def is_root?
-    parent.nil? && user && name == ROOT_NAME
+    parent.nil? && name == ROOT_FOLER_NAME
   end
 
-  private
-
-  def ensure_valid_parent
-    errors.add(:parent, :invalid) if parent.nil?
-  end
+private
 
   def prevent_root_deletion
-    raise "Root folder can't be deleted" if is_root?
+    raise 'Root folder cannot be deleted' if is_root?
   end
 end

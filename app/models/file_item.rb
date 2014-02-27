@@ -8,6 +8,6 @@ class FileItem < ActiveRecord::Base
     presence: true,
     uniqueness: {
       scope: :folder_id,
-      case_sensitive: false 
+      case_sensitive: false
     }
 end

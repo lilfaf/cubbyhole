@@ -24,15 +24,24 @@ ActiveRecord::Schema.define(version: 20140221173923) do
     t.datetime "updated_at"
   end
 
+  add_index "file_items", ["name", "folder_id"], name: "index_file_items_on_name_and_folder_id", using: :btree
+
   create_table "folders", force: true do |t|
     t.string   "name"
-    t.string   "ancestry"
     t.integer  "user_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "folders", ["ancestry"], name: "index_folders_on_ancestry", unique: true, using: :btree
+  add_index "folders", ["depth"], name: "index_folders_on_depth", using: :btree
+  add_index "folders", ["lft"], name: "index_folders_on_lft", using: :btree
+  add_index "folders", ["name", "parent_id"], name: "index_folders_on_name_and_parent_id", using: :btree
+  add_index "folders", ["parent_id"], name: "index_folders_on_parent_id", using: :btree
+  add_index "folders", ["rgt"], name: "index_folders_on_rgt", using: :btree
   add_index "folders", ["user_id"], name: "index_folders_on_user_id", using: :btree
 
   create_table "oauth_access_grants", force: true do |t|

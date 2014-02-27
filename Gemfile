@@ -6,7 +6,7 @@ gem 'rails', '4.0.3'
 gem 'pg', '~> 0.17.1'
 
 # Tree data structure
-gem 'ancestry', '~> 2.0.0'
+gem 'awesome_nested_set', '~> 3.0.0.rc.3'
 
 # Authentication and OAuth
 gem 'devise', '~> 3.2.2'

@@ -7,5 +7,7 @@ class CreateFileItems < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :file_items, [:name, :folder_id]
   end
 end

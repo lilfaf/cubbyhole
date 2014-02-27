@@ -1,9 +1,14 @@
 class Api::FoldersController < Api::ApiController
+  before_filter :load_folder, only: [:index, :show]
 
   def index
+    @items = @folder.children.load + @folder.file_items
+    @items.sort_by(&:created_at)
+    respond_with(@items)
   end
 
   def show
+    respond_with(@folder)
   end
 
   def create
@@ -16,6 +21,8 @@ class Api::FoldersController < Api::ApiController
 
     @folder = current_user.folders.new(params_hash)
     if @folder.save
+      puts @folder.errors[:parent]
+      #puts @folder.errors.empty?
       respond_with(@folder, status: 201, default_template: :show)
     else
       invalid_record!(@folder)
@@ -32,6 +39,13 @@ class Api::FoldersController < Api::ApiController
   end
 
   private
+
+  def load_folder
+    #puts current_user.folders.where(id: params[:id]).exists?
+    param_id = params[:id].to_i
+    param_id = current_user.root_folder.id if param_id == 0
+    @folder ||= current_user.folders.find(param_id)
+  end
 
   def allowed_folder_params
     params.require(:folder).permit(:name, :parent_id)
