@@ -26,6 +26,13 @@ class Folder < ActiveRecord::Base
     parent.nil? && name == ROOT_FOLER_NAME
   end
 
+  # Extends active record method to
+  # prevent changes on the root folder
+  def update_attributes(attributes)
+    raise Errors::ForbiddenOperation if is_root?
+    super(attributes)
+  end
+
   private
 
   def prevent_root_deletion
