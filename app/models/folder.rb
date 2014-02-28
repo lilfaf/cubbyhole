@@ -1,3 +1,5 @@
+require 'errors'
+
 class Folder < ActiveRecord::Base
   ROOT_FOLER_NAME = 'cubbyhole_root_folder'
 
@@ -24,9 +26,9 @@ class Folder < ActiveRecord::Base
     parent.nil? && name == ROOT_FOLER_NAME
   end
 
-private
+  private
 
   def prevent_root_deletion
-    raise 'Root folder cannot be deleted' if is_root?
+    raise Errors::ForbiddenOperation, 'Root folder cannot be deleted' if is_root?
   end
 end

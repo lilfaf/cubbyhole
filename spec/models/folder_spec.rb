@@ -28,7 +28,7 @@ describe Folder do
   end
 
   it "should prevent root deletion from being deleted" do
-    expect{ user.root_folder.destroy }.to raise_error(RuntimeError)
+    expect{ user.root_folder.destroy }.to raise_error(Errors::ForbiddenOperation)
   end
 
   it "should destroy dependent file items" do

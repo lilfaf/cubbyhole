@@ -1,5 +1,5 @@
 class Api::FoldersController < Api::ApiController
-  before_filter :load_folder, only: [:index, :show]
+  before_filter :load_folder, except: [:create]
 
   def index
     @items = @folder.children.load + @folder.file_items
@@ -30,7 +30,9 @@ class Api::FoldersController < Api::ApiController
   def update
   end
 
-  def destoy
+  def destroy
+    @folder.destroy
+    respond_with(@folder, status: 204)
   end
 
   def copy

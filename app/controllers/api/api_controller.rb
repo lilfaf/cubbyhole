@@ -1,4 +1,5 @@
 require 'api_responder'
+require 'errors'
 
 class Api::ApiController < ActionController::Metal
   include AbstractController::ViewPaths
@@ -21,8 +22,11 @@ class Api::ApiController < ActionController::Metal
   self.responder = ApiResponder
   respond_to :json
 
+  # Handle exceptions and repond with a friendly error message
+  rescue_from Exception, with: :error_during_processing
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActionController::ParameterMissing, with: :parameter_missing
+  rescue_from Errors::ForbiddenOperation, with: :forbidden_operation
 
   doorkeeper_for :all
 
@@ -32,21 +36,29 @@ class Api::ApiController < ActionController::Metal
     end
   end
 
-  def not_found
-    render 'errors/record_not_found', status: :not_found
-  end
-
   def invalid_record!(record)
     @record = record
-    render 'api/errors/invalid_record', status: :unprocessable_entity
+    render 'errors/invalid_record', status: :unprocessable_entity
+  end
+
+  private
+
+  def error_during_processing(exception)
+    Rails.logger.error exception.message
+    Rails.logger.error exception.backtrace.join("\n")
+    render text: { exception: exception.message }.to_json, status: 500 and return
+  end
+
+  def not_found
+    render 'errors/record_not_found', status: :not_found and return
   end
 
   def parameter_missing
     @exception = exception
-    render 'errors/parameter_missing', status: :bad_request
+    render 'errors/parameter_missing', status: :bad_request and return
   end
 
-  #def forbidden_operation!
-  #  render 'errors/forbidden_operation', status: :forbidden and return
-  #end
+  def forbidden_operation
+    render 'errors/forbidden_operation', status: :forbidden and return
+  end
 end

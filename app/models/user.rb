@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
+  # Warning this might cause an error
+  # when deleting a user through
   has_many :folders, dependent: :delete_all
 
   has_one :root_folder,
