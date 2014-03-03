@@ -138,11 +138,46 @@ describe Api::FoldersController do
     end
 
     it "should delete folder and his descendants" do
-      folder.children.create(name: 'test')
+      current_user.folders.create(name: 'test', parent: folder)
       expect{
         api_delete :destroy, id: folder.id
       }.to change{Folder.count}.by(-2)
       expect(response.status).to eq(204)
+    end
+  end
+
+  describe "copying a folder" do
+
+    let!(:destination) {
+      current_user.folders.create(name: 'destination', parent_id: current_user.root_folder.id)
+    }
+
+    it "should return 404 error if folder couldn't be found" do
+      api_post :copy, id: -1
+      assert_not_found!
+    end
+
+    it "should return 404 if destination folder could not be found" do
+      api_post :copy, id: folder.id, parent_id: -1
+      assert_not_found!
+    end
+
+    it "should return 403 forbidden operation for root folder" do
+      api_post :copy, id: 0, parent_id: destination.id
+      assert_forbidden_operation!
+    end
+
+    it "should fail if folder name is not unique in target" do
+      current_user.folders.create(name: folder.name, parent: destination)
+      api_post :copy, id: folder.id, parent_id: destination
+      expect(json_response['errors'].keys).to eq(['name'])
+      assert_invalid_record!
+    end
+
+    it "should copy a folder" do
+      api_post :copy, id: folder.id, parent_id: destination
+      expect(response.status).to eq(200)
+      expect(json_response).to have_attributes(folder_attributes)
     end
   end
 end

@@ -10,4 +10,11 @@ class FileItem < ActiveRecord::Base
       scope: :folder_id,
       case_sensitive: false
     }
+
+  def copy(target_folder)
+    new_file = self.dup
+    new_file.folder = target_folder
+    new_file.save!
+    new_file
+  end
 end

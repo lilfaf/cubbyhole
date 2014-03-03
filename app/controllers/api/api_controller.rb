@@ -22,7 +22,7 @@ class Api::ApiController < ActionController::Metal
   self.responder = ApiResponder
   respond_to :json
 
-  # Handle exceptions and repond with a friendly error message
+  # Handle exceptions and respond with a friendly error message
   rescue_from Exception, with: :error_during_processing
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActionController::ParameterMissing, with: :parameter_missing

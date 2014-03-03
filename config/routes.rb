@@ -5,7 +5,10 @@ Cubbyhole::Application.routes.draw do
 
   namespace :api, constraints: { format: 'json' } do
     resources :folders, except: [:index, :new, :edit] do
-      get 'items', to: 'folders#index', on: :member
+      member do
+        get :items, to: 'folders#index'
+        post :copy
+      end
     end
   end
 

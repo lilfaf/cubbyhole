@@ -32,8 +32,25 @@ describe Folder do
   end
 
   it "should destroy dependent file items" do
-    parent = user.root_folder.children.create(name: 'test')
+    parent = user.folders.create(name: 'test', parent_id: user.root_folder.id)
     2.times { create(:file_item, folder: parent) }
     expect{ parent.destroy }.to change{ FileItem.count }.by(-2)
+  end
+
+  describe "copying folder" do
+    %w(source destination).each do |name|
+      let!(name.to_sym) { user.folders.create(name: name, parent_id: user.root_folder.id) }
+    end
+
+    let!(:subfolder) { user.folders.create(name: 'sub', parent: source) }
+
+    it "should duplicate dependent file items" do
+      2.times { create(:file_item, folder: subfolder) }
+      expect{ source.copy(destination) }.to change{ FileItem.count }.by(2)
+    end
+
+    it "should duplicate subfolders" do
+      expect{ source.copy(destination) }.to change{ Folder.count }.by(2)
+    end
   end
 end

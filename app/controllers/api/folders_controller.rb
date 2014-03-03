@@ -1,4 +1,5 @@
 class Api::FoldersController < Api::ApiController
+  before_filter :prevent_root_copy, only: :copy
   before_filter :load_folder, except: [:create]
 
   def index
@@ -22,7 +23,7 @@ class Api::FoldersController < Api::ApiController
 
   def update
     if @folder.update_attributes(params_hash)
-      respond_with(@folder, status: 200, default_template: :show)
+      respond_with(@folder, default_template: :show)
     else
       invalid_record!(@folder)
     end
@@ -34,6 +35,13 @@ class Api::FoldersController < Api::ApiController
   end
 
   def copy
+    target = current_user.folders.find(params[:parent_id])
+    begin
+      @folder = @folder.copy(target)
+      respond_with(@folder, default_template: :show)
+    rescue ActiveRecord::RecordInvalid => e
+      invalid_record!(e.record)
+    end
   end
 
   private
@@ -55,5 +63,11 @@ class Api::FoldersController < Api::ApiController
 
   def allowed_folder_params
     params.require(:folder).permit(:name, :parent_id)
+  end
+
+  def prevent_root_copy
+    if params[:id].to_i == 0 && action_name == 'copy'
+      raise Errors::ForbiddenOperation
+    end
   end
 end
