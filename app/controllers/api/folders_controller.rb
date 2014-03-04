@@ -35,7 +35,8 @@ class Api::FoldersController < Api::ApiController
   end
 
   def copy
-    target = current_user.folders.find(params[:parent_id])
+    target_id = params.delete(:parent_id)
+    target = current_user.folders.find(target_id)
     begin
       @folder = @folder.copy(target)
       respond_with(@folder, default_template: :show)
@@ -47,7 +48,7 @@ class Api::FoldersController < Api::ApiController
   private
 
   def load_folder
-    param_id = params[:id].to_i
+    param_id = params.delete(:id).to_i
     param_id = current_user.root_folder.id if param_id == 0
     @folder ||= current_user.folders.find(param_id)
   end
@@ -66,7 +67,7 @@ class Api::FoldersController < Api::ApiController
   end
 
   def prevent_root_copy
-    if params[:id].to_i == 0 && action_name == 'copy'
+    if params[:id] == '0' && action_name == 'copy'
       raise Errors::ForbiddenOperation
     end
   end
