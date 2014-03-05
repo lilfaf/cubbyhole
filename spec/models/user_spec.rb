@@ -2,8 +2,12 @@ require 'spec_helper'
 
 describe User do
   it { should have_db_column(:username) }
+  it { should have_db_column(:plan_id) }
+
+  it { should have_db_index(:plan_id) }
 
   it { should have_many(:folders) }
+  it { should belong_to(:plan) }
   it { should have_one(:root_folder) }
 
   it { should validate_presence_of :username }

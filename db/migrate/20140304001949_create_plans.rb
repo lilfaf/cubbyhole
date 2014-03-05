@@ -2,8 +2,7 @@ class CreatePlans < ActiveRecord::Migration
   def change
     create_table :plans do |t|
       t.string :name
-      t.decimal :price
-      t.integer :duration
+      t.float :price
       t.integer :max_storage_space
       t.integer :max_bandwidth_up
       t.integer :max_bandwidth_down

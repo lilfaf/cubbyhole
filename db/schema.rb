@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140304001949) do
+ActiveRecord::Schema.define(version: 20140304200518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,8 +85,7 @@ ActiveRecord::Schema.define(version: 20140304001949) do
 
   create_table "plans", force: true do |t|
     t.string   "name"
-    t.decimal  "price"
-    t.integer  "duration"
+    t.float    "price"
     t.integer  "max_storage_space"
     t.integer  "max_bandwidth_up"
     t.integer  "max_bandwidth_down"
@@ -111,9 +110,11 @@ ActiveRecord::Schema.define(version: 20140304001949) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
+    t.integer  "plan_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["plan_id"], name: "index_users_on_plan_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
