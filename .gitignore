@@ -17,3 +17,4 @@
 
 *.swp
 ./**/.keep
+Gemfile.lock
