@@ -11,6 +11,6 @@ Cubbyhole::Application.routes.draw do
       end
     end
   end
-
+  resources :plans
   root to: 'home#index'
 end

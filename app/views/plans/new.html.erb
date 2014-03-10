@@ -1,0 +1,31 @@
+<h1>New plan</h1>
+
+<%= form_for(@plan, url: plans_path, method: :post) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :max_storage_space %><br />
+    <%= f.text_field :max_storage_space %>
+  </div>
+  <div class="field">
+    <%= f.label :max_bandwidth_up %><br />
+    <%= f.text_field :max_bandwidth_up %>
+  </div>
+  <div class="field">
+    <%= f.label :max_bandwidth_down %><br />
+    <%= f.text_field :max_bandwidth_down %>
+  </div>
+  <div class="field">
+    <%= f.label :daily_shared_links_quota %><br />
+    <%= f.text_field :daily_shared_links_quota %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add" %>
+  </div>
+<% end %>

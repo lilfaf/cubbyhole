@@ -1,0 +1,16 @@
+<h1>Plans</h1>
+
+<% if @plans.empty? %>
+  There is no plans to display
+<% else %>
+  <ul>
+  <% for @plan in @plans %>
+    <li>
+      <%= @plan.name %>
+      <%= link_to "Show", plan_url(@plan.id), :method => :get %>
+      <%= link_to "Edit", edit_plan_url(@plan.id) %>
+      <%= link_to "Delete", plan_url(@plan.id), :method => :delete %>
+    </li>
+  <% end %>
+  <ul>
+<% end %>
