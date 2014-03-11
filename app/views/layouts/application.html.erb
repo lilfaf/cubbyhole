@@ -1,17 +1,55 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Cubbyhole</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    <title><%= content_for?(:title) ? yield(:title) : "cubbyhole" %></title>
 
-<%= yield %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+
+      <nav class="top-bar" data-topbar>
+        <div class="row">
+          <ul class="title-area">
+            <li class="name">
+              <h1><a href="#">Cubbyhole</a></h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+          </ul>
+
+          <section class="top-bar-section">
+            <ul class="right">
+              <li><a href="#">Features</a></li>
+              <li><a href="#">Prices</a></li>
+              <li><%= link_to "Sign up", new_user_registration_url, {:class => "button"} %></li>
+            </ul>
+          </section>
+          </div>
+      </nav>
+
+
+      <% if !notice.nil? %>
+        <div data-alert class="alert-box">
+          <%= notice %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+
+      <% if !alert.nil? %>
+        <div data-alert class="alert-box alert">
+          <%= alert %>
+          <a href="#" class="close">&times;</a>
+        </div>
+      <% end %>
+
+      <%= yield %>
+
+
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>

@@ -12,6 +12,9 @@ gem 'awesome_nested_set', '~> 3.0.0.rc.3'
 gem 'devise', '~> 3.2.2'
 gem 'doorkeeper', '~> 1.0.0'
 
+# Foundation
+gem 'foundation-rails'
+
 # Payment
 gem 'activemerchant', '~> 1.42.4'
 
