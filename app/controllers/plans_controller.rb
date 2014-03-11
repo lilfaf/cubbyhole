@@ -17,7 +17,7 @@ class PlansController < ApplicationController
       flash[:notice] = "Plan added successfully"
       redirect_to plans_url
     else
-      flash[:notice] = "Create Error!"
+      flash[:alert] = "Create Error."
       render "new"
     end
   end
@@ -32,7 +32,7 @@ class PlansController < ApplicationController
       flash[:notice] = "Plan updated successfully"
       redirect_to plans_url
     else
-      flash[:notice] = "Update Error!"
+      flash[:alert] = "Update Error."
       render "edit"
     end
   end
@@ -42,7 +42,7 @@ class PlansController < ApplicationController
     if @plan.destroy
       flash[:notice] = "Plan deleted successfully"
     else
-      flash[:notice] = "Destroy Error!"
+      flash[:alert] = "Destroy Error."
     end
     redirect_to plans_url
   end
