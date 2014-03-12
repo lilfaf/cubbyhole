@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
     <title><%= content_for?(:title) ? yield(:title) : "cubbyhole" %></title>
 
     <%= stylesheet_link_tag    "application" %>
@@ -17,7 +17,7 @@
         <div class="row">
           <ul class="title-area">
             <li class="name">
-              <h1><a href="#">Cubbyhole</a></h1>
+              <h1><%= link_to "Cubbyhole", root_url %></h1>
             </li>
             <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
           </ul>
@@ -26,7 +26,8 @@
             <ul class="right">
               <li><a href="#">Features</a></li>
               <li><a href="#">Prices</a></li>
-              <li><%= link_to "Sign up", new_user_registration_url, {class: "button"} %></li>
+              <li><%= link_to "Sign up", new_user_registration_url, {class: "button radius"} %></li>
+              <li class="last"><%= link_to "Sign in", new_user_session_url, {class: "button radius"} %></li>
             </ul>
           </section>
           </div>
@@ -49,6 +50,9 @@
 
       <%= yield %>
 
+      <div class="footer"> 
+        <div class="row">Cubbyhole - Supersonic app made with tears and growls in hell.</div>
+      </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

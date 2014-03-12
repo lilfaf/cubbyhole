@@ -42,7 +42,7 @@ $row-width: rem-calc(1200);
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, "Asap" ,Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -1212,15 +1212,16 @@ $row-width: rem-calc(1200);
   width:100%;
   p{
     color:#fff;
-    font-size:20pt;
+    font-size:24pt;
     text-align:center;
     line-height:500px;
   }
 }
 .row{
   h1{
-    margin-top:50px;
+    margin-top:40px;
     text-align:center;
+    color:#212121;
   }
 }
 .features{
@@ -1240,6 +1241,24 @@ $row-width: rem-calc(1200);
 }
 .top-bar{
   .right{
-      margin-right:10px;
+   	  margin-right:10px;
+   	  .last{
+	    margin-left:10px;
+	  }
   }
+  
+}
+.devices{
+	text-align:center;
+	.button{
+		margin-top:40px;
+		margin-bottom:50px;
+	}
+}
+.footer{
+	margin-top:80px;
+	color:#fff;
+	height:250px;
+	line-height:250px;
+	background-color:#212121;
 }
