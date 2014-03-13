@@ -43,3 +43,4 @@ bundle
 rake db:create:all
 rake db:migrate
 rake db:migrate RAILS_ENV=test
+rake db:seed

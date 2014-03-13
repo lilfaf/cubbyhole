@@ -1,5 +1,5 @@
 Cubbyhole::Application.routes.draw do
-
+  ActiveAdmin.routes(self)
   use_doorkeeper
   devise_for :users
 

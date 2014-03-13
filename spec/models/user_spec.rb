@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
   it { should have_db_column(:username) }
   it { should have_db_column(:plan_id) }
+  it { should have_db_column(:admin).with_options(default: false) }
 
   it { should have_db_index(:plan_id) }
 

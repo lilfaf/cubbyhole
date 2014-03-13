@@ -25,6 +25,10 @@ gem 'activemerchant', '~> 1.42.4'
 gem 'rabl', '~> 0.9.3'
 gem 'oj', '~> 2.5.4'
 
+# Admin
+gem 'activeadmin', github: 'gregbell/active_admin'
+
+# Assets
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
