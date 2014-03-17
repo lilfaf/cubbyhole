@@ -27,7 +27,7 @@
               <li><a href="#">Prices</a></li>
               <% if user_signed_in? %>
                 <li><%= link_to "My Cubbyhole",  edit_user_registration_url, {class: "button secondary radius"} %></li>
-                <li class="last"><%= link_to "Sign out", destroy_user_session_url, {class: "button radius"} %></li>
+                <li class="last"><%= link_to "Sign out", destroy_user_session_url, {method: :delete, class: "button radius"} %></li>
               <% elsif %>
                 <li><%= link_to "Sign up", new_user_registration_url, {class: "button radius"} %></li>
                 <li class="last"><%= link_to "Sign in", new_user_session_url, {class: "button radius"} %></li>
