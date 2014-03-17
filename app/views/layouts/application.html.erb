@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
-    <title><%= content_for?(:title) ? yield(:title) : "cubbyhole" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Cubbyhole" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -26,7 +26,7 @@
               <li><a href="#">Features</a></li>
               <li><a href="#">Prices</a></li>
               <% if user_signed_in? %>
-                <li><%= link_to current_user.username, new_user_registration_url, {class: "button secondary radius"} %></li>
+                <li><%= link_to "My Cubbyhole",  edit_user_registration_url, {class: "button secondary radius"} %></li>
                 <li class="last"><%= link_to "Sign out", destroy_user_session_url, {class: "button radius"} %></li>
               <% elsif %>
                 <li><%= link_to "Sign up", new_user_registration_url, {class: "button radius"} %></li>
@@ -55,7 +55,7 @@
       <%= yield %>
 
       <div class="footer">
-        <div class="row">Cubbyhole - Supersonic cloud platform</div>
+        <div class="row">Cubbyhole - Supersonic cloud platform - <%= Time.now.year %></div>
       </div>
     <%= javascript_include_tag "application" %>
     <%= content_for :js %>
