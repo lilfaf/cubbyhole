@@ -1204,17 +1204,17 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, "Asap" ,Arial, sans
 
 @import 'foundation';
 
-.world-header{
-  display: table;
+#parallax-header{
   background-image: url('/assets/head.jpg');
   background-size:cover;
   height: 500px;
   width:100%;
+  text-align:center;
   p{
+    margin-top:200px;
+    display:block;
     color:#fff;
-    font-size:24pt;
-    text-align:center;
-    line-height:500px;
+    font-size:30pt;
   }
 }
 .row{
@@ -1260,4 +1260,7 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, "Asap" ,Arial, sans
   height:250px;
   line-height:250px;
   background-color:#212121;
+}
+.alert-box{
+  margin-bottom:0;
 }

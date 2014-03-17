@@ -12,7 +12,6 @@
   </head>
 
   <body>
-
       <nav class="top-bar" data-topbar>
         <div class="row">
           <ul class="title-area">
@@ -26,8 +25,13 @@
             <ul class="right">
               <li><a href="#">Features</a></li>
               <li><a href="#">Prices</a></li>
-              <li><%= link_to "Sign up", new_user_registration_url, {class: "button radius"} %></li>
-              <li class="last"><%= link_to "Sign in", new_user_session_url, {class: "button radius"} %></li>
+              <% if user_signed_in? %>
+                <li><%= link_to current_user.username, new_user_registration_url, {class: "button secondary radius"} %></li>
+                <li class="last"><%= link_to "Sign out", destroy_user_session_url, {class: "button radius"} %></li>
+              <% elsif %>
+                <li><%= link_to "Sign up", new_user_registration_url, {class: "button radius"} %></li>
+                <li class="last"><%= link_to "Sign in", new_user_session_url, {class: "button radius"} %></li>
+              <% end %>
             </ul>
           </section>
           </div>
@@ -54,5 +58,6 @@
         <div class="row">Cubbyhole - Supersonic cloud platform</div>
       </div>
     <%= javascript_include_tag "application" %>
+    <%= content_for :js %>
   </body>
 </html>

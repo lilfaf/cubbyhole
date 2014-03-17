@@ -1,7 +1,9 @@
-<div class="world-header">
-  <div class="row">
-    <p>Secure, share your data is easier than before.</p>
-  </div>
+<div id="parallax-header">
+  <ul id="scene" class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15">
+      <li class="layer" data-depth="0.50"><%= image_tag("layer1.png") %></li>
+      <li class="layer" data-depth="0.25"><%= image_tag("layer2.png") %></li>
+      <li class="layer" data-depth="0"><p>Secure, share your data is easier than before.</p></li>
+  </ul>
 </div>
 
 <div class="row">
@@ -36,7 +38,7 @@
 <div class="devices">
   <div class="row">
     <h1>Everywhere at any moment</h1>
-      <div class="button large radius">Cubbyhole for Windows</div> 
+      <div class="button large radius">Cubbyhole for Windows</div>
   </div>
 </div>
 <!--
@@ -76,3 +78,6 @@
   </div>
 </div>
 -->
+<%= content_for :js do %>
+  <script>$('#scene').parallax();</script>
+<% end %>
