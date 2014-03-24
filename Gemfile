@@ -34,6 +34,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 group :test do
   gem 'rspec-rails', '~> 2.14.1'
   gem 'factory_girl_rails', '~> 4.4.1'
