@@ -1,4 +1,9 @@
 class PaymentsController < ApplicationController
+  def new
+    if not user_signed_in?
+      redirect_to new_user_session_url
+    end
+  end
 
   def create
     @credit_card = ActiveMerchant::Billing::CreditCard.new(
@@ -33,7 +38,7 @@ class PaymentsController < ApplicationController
     }
 
     if @credit_card.valid?
-      recurring(999, @credit_card, options)
+      recurring(current_user.plan.price, @credit_card, options)
     else
       flash[:alert] = "Credit Card Invalid."
       render "new"
