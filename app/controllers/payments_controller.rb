@@ -1,57 +1,56 @@
 class PaymentsController < ApplicationController
 
-  def test
-
-    #create a fake credit_card
+  def create
     @credit_card = ActiveMerchant::Billing::CreditCard.new(
-      :first_name         => 'Bob',
-      :last_name          => 'Bobsen',
-      :number             => '6011200981567548',
-      :month              => '1',
-      :year               => '2019',
-      :verification_value => '000'
+      :first_name         => params[:first_name],
+      :last_name          => params[:last_name],
+      :number             => params[:number],
+      :month              => params[:month],
+      :year               => params[:year],
+      :verification_value => params[:verification_value]
     )
 
-    puts "==========================="
-    puts "=======TEST PURPOSE========"
-    puts "==========================="
-    puts "Test mode : #{GATEWAY.test?}"
-
-    options = {
-      :period => "Month",
-      :frequency => 1,
-      :start_date => Time.now,
-      :description => "this is a test recurring subscription"
-    }
-
-    #process fake recurring
-    recurring(999, @credit_card, options)
-  end
-
-
-  def recurring(amount, credit_card, options)
-
-    #amount – The amount to be charged to the customer at each interval as an Integer value in cents.
-    #credit_card – The CreditCard details for the transaction.
-    #options – A hash of parameters.
+    #@credit_card = ActiveMerchant::Billing::CreditCard.new(
+      #:first_name         => 'Bob',
+      #:last_name          => 'Bobsen',
+      #:number             => '6011200981567548',
+      #:month              => '1',
+      #:year               => '2019',
+      #:verification_value => '000'
+    #)
 
     #Options
-
     #:period – [Day, Week, SemiMonth, Month, Year] default: Month
     #:frequency – a number
     #:cycles – Limit to certain # of cycles (OPTIONAL)
     #:start_date – When does the charging starts (REQUIRED)
     #:description – The description to appear in the profile (REQUIRED)
+    options = {
+      :period => "Month",
+      :frequency => 1,
+      :start_date => Time.now,
+      :description => "Recurring subscription"
+    }
 
-    if credit_card.valid?
-      response = GATEWAY.recurring(amount, credit_card, options)
-      if response.success?
-        puts "Recurring payment successfull."
-      else
-        raise StandardError, response.message
-      end
+    if @credit_card.valid?
+      recurring(999, @credit_card, options)
     else
-      puts "Credit card invalid"
+      flash[:alert] = "Credit Card Invalid."
+      render "new"
+    end
+  end
+
+  def recurring(amount, credit_card, options)
+    #amount – The amount to be charged to the customer at each interval as an Integer value in cents.
+    #credit_card – The CreditCard details for the transaction.
+    #options – A hash of parameters.
+    response = GATEWAY.recurring(amount, credit_card, options)
+    if response.success?
+      flash[:notice] = "Subcribe sucessfully."
+      redirect_to root_url
+      #return  response.params["profile_id"]
+    else
+      raise StandardError, response.message
     end
   end
 end

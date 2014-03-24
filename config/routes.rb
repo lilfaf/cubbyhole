@@ -12,8 +12,6 @@ Cubbyhole::Application.routes.draw do
     end
   end
   resources :plans
+  resources :payments, only: [:new, :create]
   root to: 'home#index'
-
-  # Test route for payment process
-  match '/payments/' => 'payments#test', :via => :get
 end
