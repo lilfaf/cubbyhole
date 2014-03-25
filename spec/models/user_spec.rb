@@ -9,7 +9,6 @@ describe User do
 
   it { should have_many(:folders) }
   it { should belong_to(:plan) }
-  it { should have_one(:root_folder) }
 
   it { should validate_presence_of :username }
   it { should validate_uniqueness_of :username }
@@ -21,15 +20,8 @@ describe User do
 
   it { should ensure_length_of(:password).is_at_least(8) }
 
-  it "should create user's root folder" do
-    user = build(:user)
-    expect{ user.save }.to change{ Folder.count }.by(1)
-    expect(user.folders.last).to eq(user.root_folder)
-    expect(user.folders.last.root?).to eq(true)
-  end
-
   it "should delete dependent folder" do
-    user = create(:user)
-    expect{ user.destroy }.to change{ Folder.count }.by(-1)
+    folder = create(:folder)
+    expect{ folder.user.destroy }.to change{ Folder.count }.by(-1)
   end
 end

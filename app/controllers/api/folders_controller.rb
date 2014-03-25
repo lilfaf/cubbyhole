@@ -1,10 +1,14 @@
 class Api::FoldersController < Api::ApiController
-  before_filter :prevent_root_copy, only: :copy
-  before_filter :load_folder, except: [:create]
+  before_filter :load_folder, except: [:index, :create]
 
   def index
-    @items = @folder.children.load + @folder.file_items
-    @items.sort_by(&:created_at)
+    record_id = params.delete(:id).to_i
+    if record_id == 0
+      @items = current_user.folders.roots + current_user.file_items.roots
+    else
+      record = current_user.folders.find(record_id)
+      @items = record.children + record.file_items
+    end
     respond_with(@items)
   end
 
@@ -13,7 +17,10 @@ class Api::FoldersController < Api::ApiController
   end
 
   def create
-    @folder = current_user.folders.new(params_hash)
+    parameters = folder_params
+    parameters.delete(:parent_id) if parameters[:parent_id] == 0
+
+    @folder = current_user.folders.new(parameters)
     if @folder.save
       respond_with(@folder, status: 201, default_template: :show)
     else
@@ -22,7 +29,12 @@ class Api::FoldersController < Api::ApiController
   end
 
   def update
-    if @folder.update_attributes(params_hash)
+    parameters = folder_params
+    if parameters[:parent_id] == 0
+      parameters.merge!(parent: nil).delete(:parent_id)
+    end
+
+    if @folder.update_attributes(parameters)
       respond_with(@folder, default_template: :show)
     else
       invalid_record!(@folder)
@@ -48,27 +60,10 @@ class Api::FoldersController < Api::ApiController
   private
 
   def load_folder
-    param_id = params.delete(:id).to_i
-    param_id = current_user.root_folder.id if param_id == 0
-    @folder ||= current_user.folders.find(param_id)
+    @folder ||= current_user.folders.find(params[:id])
   end
 
-  def params_hash
-    # Folder with 0 index points to the current user root folder
-    parameters = allowed_folder_params
-    if parameters[:parent_id] == 0
-      parameters.merge!({parent_id: current_user.root_folder.id})
-    end
-    parameters
-  end
-
-  def allowed_folder_params
+  def folder_params
     params.require(:folder).permit(:name, :parent_id)
-  end
-
-  def prevent_root_copy
-    if params[:id] == '0' && action_name == 'copy'
-      raise Errors::ForbiddenOperation
-    end
   end
 end

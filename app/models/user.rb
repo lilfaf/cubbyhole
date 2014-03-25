@@ -1,19 +1,12 @@
 require 'validators/email'
 
 class User < ActiveRecord::Base
-  ROOT_FOLDER_NAME = 'cubbyhole_root_folder' # Move dat shit to a global config var
-
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :plan
-  # Warning this might cause an error
-  # when deleting a user through
-  has_many :folders, dependent: :delete_all
-
-  has_one :root_folder,
-    ->(obj) { obj.folders.where(name: ROOT_FOLDER_NAME, parent_id: nil) },
-    class_name: 'Folder'
+  has_many :folders, dependent: :destroy
+  has_many :file_items, dependent: :destroy
 
   validates :username,
     presence: true,
@@ -24,9 +17,6 @@ class User < ActiveRecord::Base
     presence: true,
     uniqueness: { case_sensitive: false },
     email: true
-
-  # Create user root folder on creation callback
-  before_create -> { build_root_folder(name: ROOT_FOLDER_NAME) }
 
   # Allow users to sign in using their username or email address
   attr_accessor :login

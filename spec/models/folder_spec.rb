@@ -23,26 +23,18 @@ describe Folder do
 
   let!(:user) { user = create(:user) }
 
-  it "should require a parent folder" do
-    expect(user.folders.build(name: 'test')).not_to be_valid
-  end
-
-  it "should prevent root deletion from being deleted" do
-    expect{ user.root_folder.destroy }.to raise_error(Errors::ForbiddenOperation)
-  end
-
   it "should destroy dependent file items" do
-    parent = user.folders.create(name: 'test', parent_id: user.root_folder.id)
+    parent = create(:folder, user: user)
     2.times { create(:file_item, folder: parent) }
     expect{ parent.destroy }.to change{ FileItem.count }.by(-2)
   end
 
   describe "copying folder" do
     %w(source destination).each do |name|
-      let!(name.to_sym) { user.folders.create(name: name, parent_id: user.root_folder.id) }
+      let!(name.to_sym) { create(:folder, user: user) }
     end
 
-    let!(:subfolder) { user.folders.create(name: 'sub', parent: source) }
+    let!(:subfolder) { create(:folder, user: user, parent: source) }
 
     it "should duplicate dependent file items" do
       2.times { create(:file_item, folder: subfolder) }
