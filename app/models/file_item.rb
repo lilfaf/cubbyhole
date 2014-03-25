@@ -1,8 +1,6 @@
 class FileItem < ActiveRecord::Base
   belongs_to :folder
-
-  validates :folder_id,
-    presence: true
+  belongs_to :user
 
   validates :name,
     presence: true,
@@ -10,6 +8,8 @@ class FileItem < ActiveRecord::Base
       scope: :folder_id,
       case_sensitive: false
     }
+
+  scope :roots, -> { where(folder_id: nil) }
 
   def copy(target_folder)
     new_file = self.dup
