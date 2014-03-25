@@ -2,12 +2,12 @@ class Api::FoldersController < Api::ApiController
   before_filter :load_folder, except: [:index, :create]
 
   def index
-    record_id = params.delete(:id).to_i
-    if record_id == 0
+    target_id = params.delete(:id).to_i
+    if target_id == 0
       @items = current_user.folders.roots + current_user.file_items.roots
     else
-      record = current_user.folders.find(record_id)
-      @items = record.children + record.file_items
+      target = current_user.folders.find(target_id)
+      @items = target.children + target.file_items
     end
     respond_with(@items)
   end
