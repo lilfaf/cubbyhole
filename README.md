@@ -25,6 +25,14 @@ vagrant up
 # coffee time...
 vagrant ssh
 cd /vagrant
-rspec
-rails s
+rspec # run all test!
 ```
+
+Then start the web server
+
+```bash
+rails s # thin
+unicorn_rails # nginx + unicorn
+```
+
+Happy coding!!

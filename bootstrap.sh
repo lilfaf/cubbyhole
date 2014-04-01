@@ -11,6 +11,14 @@ sudo add-apt-repository ppa:chris-lea/postgresql-9.3
 sudo apt-get -y update
 sudo apt-get -y install libpq-dev postgresql-9.3 postgresql-contrib-9.3 nodejs
 
+# install nginx
+sudo apt-get -y install nginx
+
+# setup nginx
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /vagrant/config/nginx.conf cubbyhole
+sudo service nginx start
+
 # fix locals
 echo "export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -38,6 +46,7 @@ rvm install 2.0.0
 rvm use 2.0.0 --default
 
 # setup rails app
+gem install bundler
 cd /vagrant
 bundle
 rake db:create:all
