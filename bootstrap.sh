@@ -2,7 +2,8 @@
 
 # install requirements
 sudo apt-get -y update
-sudo apt-get -y install build-essential curl git-core python-software-properties python g++ make
+sudo apt-get -y install build-essential curl git-core\
+  python-software-properties python g++ make libpcre3 libpcre3-dev
 
 # install postresql / nodejs
 sudo add-apt-repository ppa:chris-lea/node.js
@@ -11,8 +12,12 @@ sudo add-apt-repository ppa:chris-lea/postgresql-9.3
 sudo apt-get -y update
 sudo apt-get -y install libpq-dev postgresql-9.3 postgresql-contrib-9.3 nodejs
 
-# install nginx
-sudo apt-get -y install nginx
+# compile nginx with file upload module
+wget http://nginx.org/download/nginx-1.4.7.tar.gz
+tar xvzf nginx-1.4.7.tar.gz
+cd nginx-1.4.7
+make && make install
+cd ..
 
 # setup nginx
 sudo rm /etc/nginx/sites-enabled/default
