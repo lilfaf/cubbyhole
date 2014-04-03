@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324222618) do
+ActiveRecord::Schema.define(version: 20140403133524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,17 @@ ActiveRecord::Schema.define(version: 20140324222618) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "user_id"
+    t.string   "asset"
+    t.string   "key"
+    t.float    "size"
+    t.string   "content_type"
+    t.string   "etag"
+    t.boolean  "processed",    default: false, null: false
   end
 
   add_index "file_items", ["folder_id"], name: "index_file_items_on_folder_id", using: :btree
   add_index "file_items", ["name"], name: "index_file_items_on_name", using: :btree
+  add_index "file_items", ["user_id", "processed"], name: "index_file_items_on_user_id_and_processed", using: :btree
   add_index "file_items", ["user_id"], name: "index_file_items_on_user_id", using: :btree
 
   create_table "folders", force: true do |t|

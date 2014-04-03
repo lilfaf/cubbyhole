@@ -35,6 +35,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
+# Uploads
+gem 'unf'
+gem 'fog', '~> 1.21.0'
+gem 'carrierwave', '~> 0.10.0'
+gem 'rmagick', '~> 2.13.2', groups: [:prodction, :development]
+
+# Config
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :test do
