@@ -13,5 +13,7 @@ Cubbyhole::Application.routes.draw do
   end
   resources :plans
   resources :payments, only: [:new, :create]
+
+  match '/app' => 'main#index', via: :get
   root to: 'home#index'
 end

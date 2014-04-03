@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     return admin_root_path if current_user.admin?
-    super
+    request.env['omniauth.origin'] || stored_location_for(resource) || app_path
   end
 
   def authenticate_admin!
