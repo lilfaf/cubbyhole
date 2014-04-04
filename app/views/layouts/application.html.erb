@@ -13,44 +13,29 @@
 
   <body>
       <nav class="top-bar" data-topbar>
-        <div class="row">
-          <ul class="title-area">
-            <li class="name">
-              <h1><%= link_to "Cubbyhole", root_url %></h1>
-            </li>
-            <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-          </ul>
+        <ul class="title-area">
+          <li class="name">
+            <h1><%= link_to "Cubbyhole", user_signed_in? ? app_url : root_url %></h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+        </ul>
 
-          <section class="top-bar-section">
-            <ul class="right">
+        <section class="top-bar-section">
+          <ul class="right">
+            <% if user_signed_in? %>
+              <li><%= link_to "Profile", edit_user_registration_url, class: "button secondary radius" %></li>
+              <li class="last"><%= link_to "Sign out", destroy_user_session_url, method: :delete, class: "button radius" %></li>
+            <% else %>
               <li><a href="#">Features</a></li>
               <li><a href="#">Prices</a></li>
-              <% if user_signed_in? %>
-                <li><%= link_to "My Cubbyhole",  edit_user_registration_url, {class: "button secondary radius"} %></li>
-                <li class="last"><%= link_to "Sign out", destroy_user_session_url, {method: :delete, class: "button radius"} %></li>
-              <% elsif %>
-                <li><%= link_to "Sign up", new_user_registration_url, {class: "button radius"} %></li>
-                <li class="last"><%= link_to "Sign in", new_user_session_url, {class: "button radius"} %></li>
-              <% end %>
-            </ul>
-          </section>
-          </div>
+              <li><%= link_to "Sign up", new_user_registration_url, class: "button radius" %></li>
+              <li class="last"><%= link_to "Sign in", new_user_session_url, class: "button radius" %></li>
+            <% end %>
+          </ul>
+        </section>
       </nav>
 
-
-      <% if !notice.nil? %>
-        <div data-alert class="alert-box">
-          <%= notice %>
-          <a href="#" class="close">&times;</a>
-        </div>
-      <% end %>
-
-      <% if !alert.nil? %>
-        <div data-alert class="alert-box alert">
-          <%= alert %>
-          <a href="#" class="close">&times;</a>
-        </div>
-      <% end %>
+      <%= display_flash_messages(notice: :standard) %>
 
       <%= yield %>
 

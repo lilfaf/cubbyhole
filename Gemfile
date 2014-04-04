@@ -18,6 +18,7 @@ gem 'doorkeeper', '~> 1.0.0'
 
 # Foundation
 gem 'foundation-rails'
+gem 'foundation_rails_helper'
 
 # Payment
 gem 'activemerchant', '~> 1.42.4'
