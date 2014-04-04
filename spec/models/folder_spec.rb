@@ -15,7 +15,7 @@ describe Folder do
   it { should have_db_index(:depth) }
   it { should have_db_index([:name, :parent_id]) }
 
-  it { should have_many(:file_items).dependent(:destroy) }
+  it { should have_many(:assets).dependent(:destroy) }
   it { should belong_to(:user) }
 
   it { should validate_presence_of(:name) }
@@ -25,8 +25,8 @@ describe Folder do
 
   it "should destroy dependent file items" do
     parent = create(:folder, user: user)
-    2.times { create(:file_item, folder: parent) }
-    expect{ parent.destroy }.to change{ FileItem.count }.by(-2)
+    2.times { create(:asset, folder: parent) }
+    expect{ parent.destroy }.to change{ Asset.count }.by(-2)
   end
 
   describe "copying folder" do
@@ -36,9 +36,9 @@ describe Folder do
 
     let!(:subfolder) { create(:folder, user: user, parent: source) }
 
-    it "should duplicate dependent file items" do
-      2.times { create(:file_item, folder: subfolder) }
-      expect{ source.copy(destination) }.to change{ FileItem.count }.by(2)
+    it "should duplicate dependent assets" do
+      2.times { create(:asset, folder: subfolder) }
+      expect{ source.copy(destination) }.to change{ Asset.count }.by(2)
     end
 
     it "should duplicate subfolders" do

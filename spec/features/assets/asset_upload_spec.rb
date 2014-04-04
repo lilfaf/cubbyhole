@@ -5,7 +5,7 @@ feature "Users" do
 
   let!(:user) { create(:user) }
 
-  scenario "uploading a file" do
+  scenario "uploading an asset" do
     login_as(user)
     visit app_url
     attach_file("file", "#{Rails.root}/spec/support/fixtures/rails.png")

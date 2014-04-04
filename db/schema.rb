@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403133524) do
+ActiveRecord::Schema.define(version: 20140312230049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,25 +31,24 @@ ActiveRecord::Schema.define(version: 20140403133524) do
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
-  create_table "file_items", force: true do |t|
+  create_table "assets", force: true do |t|
     t.string   "name"
-    t.string   "href"
     t.integer  "folder_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "asset"
     t.string   "key"
     t.float    "size"
     t.string   "content_type"
     t.string   "etag"
     t.boolean  "processed",    default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "file_items", ["folder_id"], name: "index_file_items_on_folder_id", using: :btree
-  add_index "file_items", ["name"], name: "index_file_items_on_name", using: :btree
-  add_index "file_items", ["user_id", "processed"], name: "index_file_items_on_user_id_and_processed", using: :btree
-  add_index "file_items", ["user_id"], name: "index_file_items_on_user_id", using: :btree
+  add_index "assets", ["folder_id"], name: "index_assets_on_folder_id", using: :btree
+  add_index "assets", ["name"], name: "index_assets_on_name", using: :btree
+  add_index "assets", ["user_id", "processed"], name: "index_assets_on_user_id_and_processed", using: :btree
+  add_index "assets", ["user_id"], name: "index_assets_on_user_id", using: :btree
 
   create_table "folders", force: true do |t|
     t.string   "name"

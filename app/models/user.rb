@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   belongs_to :plan
   has_many :folders, dependent: :destroy
-  has_many :file_items, dependent: :destroy
+  has_many :assets, dependent: :destroy
 
   validates :username,
     presence: true,

@@ -1,8 +1,7 @@
 require 'spec_helper'
 
-describe FileItem do
+describe Asset do
   it { should have_db_column(:name) }
-  it { should have_db_column(:href) }
   it { should have_db_column(:folder_id) }
   it { should have_db_column(:user_id) }
   it { should have_db_column(:processed).with_options(default: false, null: false) }
@@ -17,7 +16,7 @@ describe FileItem do
 
   describe "validation" do
     before do
-      FileItem.any_instance.stub(:set_asset_metadata).and_return(true)
+      Asset.any_instance.stub(:set_asset_metadata).and_return(true)
     end
 
     it { should validate_presence_of(:name) }
@@ -29,38 +28,38 @@ describe FileItem do
   end
 
   it "should have default scope with processed true" do
-    create(:file_item, processed: false)
-    file = create(:file_item)
-    expect(FileItem.all).to match_array([file])
+    create(:asset, processed: false)
+    asset = create(:asset)
+    expect(Asset.all).to match_array([asset])
   end
 
   describe "#post_processing_required?" do
     it "should return true if the asset is an image" do
-      expect(create(:file_item).post_processing_required?).to eq(true)
+      expect(create(:asset).post_processing_required?).to eq(true)
     end
 
-    it "should return false for other file types" do
-      file = create(:file_item)
-      file.content_type = 'video/mp4'
-      file.save
-      expect(file.post_processing_required?).to eq(false)
+    it "should return false if the asset is not an image" do
+      asset = create(:asset)
+      asset.content_type = 'video/mp4'
+      asset.save
+      expect(asset.post_processing_required?).to eq(false)
     end
   end
 
   it "should set asset metadata" do
-    file = create(:file_item)
-    expect(file.size).to eq(84889)
-    expect(file.content_type).to eq('image/png')
-    expect(file.etag).to eq('110c700b3c4b02286cbfa3b700af8a57')
+    asset = create(:asset)
+    expect(asset.size).to eq(84889)
+    expect(asset.content_type).to eq('image/png')
+    expect(asset.etag).to eq('110c700b3c4b02286cbfa3b700af8a57')
   end
 
   it "should not be valid with invalid key" do
-    expect(build(:file_item, key: '123')).not_to be_valid
+    expect(build(:asset, key: '123')).not_to be_valid
   end
 
-  it "should copy a file" do
+  it "should copy an asset" do
     folder = create(:folder)
-    file = create(:file_item)
-    expect{ file.copy(folder) }.to change{ FileItem.count }.by(1)
+    asset = create(:asset)
+    expect{ asset.copy(folder) }.to change{ Asset.count }.by(1)
   end
 end

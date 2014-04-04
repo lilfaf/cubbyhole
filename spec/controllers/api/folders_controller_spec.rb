@@ -14,7 +14,7 @@ describe Api::FoldersController do
 
     it "should get root folders and items" do
       create(:folder, user: current_user)
-      create(:file_item, user: current_user)
+      create(:asset, user: current_user)
       api_get :index, id: 0
       expect(response.status).to eq(200)
       expect(json_response.size).to eq(2)
@@ -24,7 +24,7 @@ describe Api::FoldersController do
     it "should get folder content" do
       root = create(:folder, user: current_user)
       create(:folder, user: current_user, parent_id: root.id)
-      create(:file_item, user: current_user, folder_id: root.id)
+      create(:asset, user: current_user, folder_id: root.id)
       api_get :index, id: root.id
       expect(response.status).to eq(200)
       expect(json_response.size).to eq(2)

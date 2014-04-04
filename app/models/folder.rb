@@ -1,7 +1,7 @@
 class Folder < ActiveRecord::Base
   acts_as_nested_set scope: :user_id
 
-  has_many :file_items, dependent: :destroy
+  has_many :assets, dependent: :destroy
   belongs_to :user
 
   validates :name,
@@ -22,8 +22,8 @@ class Folder < ActiveRecord::Base
 
     copied_folder = new_folder if copied_folder.nil?
 
-    self.file_items.each do |file|
-      file.copy(new_folder)
+    self.assets.each do |assets|
+      assets.copy(new_folder)
     end
 
     self.children.each do |folder|
