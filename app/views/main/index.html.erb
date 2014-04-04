@@ -1,3 +1,5 @@
 <h1>App Page</h1>
 
-# add form here
+<%= s3_uploader_form post: api_file_items_url, as: "file[key]" do %>
+  <%= file_field_tag :file, multiple: true %>
+<% end %>
