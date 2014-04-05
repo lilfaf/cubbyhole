@@ -12,7 +12,7 @@ describe Api::FoldersController do
       assert_not_found!
     end
 
-    it "should get root folders and items" do
+    it "should get root folders and assets" do
       create(:folder, user: current_user)
       create(:asset, user: current_user)
       api_get :index, id: 0
@@ -125,7 +125,7 @@ describe Api::FoldersController do
     end
   end
 
-  describe "deleting  folder" do
+  describe "deleting folder" do
     it "should return 404 error if folder not found" do
       api_delete :destroy, id: -1
       assert_not_found!

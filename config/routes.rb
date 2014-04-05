@@ -10,6 +10,12 @@ Cubbyhole::Application.routes.draw do
         post :copy
       end
     end
+    resources :assets, except: [:new, :edit], path: :files do
+      member do
+        get :content
+        post :copy
+      end
+    end
   end
   resources :plans
   resources :payments, only: [:new, :create]

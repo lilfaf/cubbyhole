@@ -1,6 +1,5 @@
 <h1>App Page</h1>
 
-<% #TODO use data attribute add fix route %>
-<%= s3_uploader_form post: root_path, as: "file[key]" do %>
+<%= s3_uploader_form post: api_assets_url, as: "file[key]" do %>
   <%= file_field_tag :file, multiple: true %>
 <% end %>

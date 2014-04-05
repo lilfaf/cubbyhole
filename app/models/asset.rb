@@ -21,6 +21,10 @@ class Asset < ActiveRecord::Base
 
   before_validation :set_asset_metadata, on: :create
 
+  def url
+    asset.authenticated_url
+  end
+
   def post_processing_required?
     %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|pjpeg|png|x-png)$}.match(content_type).present?
   end

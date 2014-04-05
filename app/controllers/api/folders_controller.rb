@@ -3,12 +3,14 @@ class Api::FoldersController < Api::ApiController
 
   def index
     target_id = params.delete(:id).to_i
-    if target_id == 0
-      @items = current_user.folders.roots + current_user.assets.roots
-    else
-      target = current_user.folders.find(target_id)
-      @items = target.children + target.assets
-    end
+
+    @items = if target_id == 0
+               current_user.folders.roots + current_user.assets.roots
+             else
+               target = current_user.folders.find(target_id)
+               target.children + target.assets
+             end
+
     respond_with(@items)
   end
 
