@@ -1265,3 +1265,12 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, "Asap" ,Arial, sans
 .alert-box{
   margin-bottom:0;
 }
+
+small.error{
+  background-color: #E4644F;
+}
+
+.alert-box.alert{
+  background-color: #E4644F;
+  border-color: #E4644F;
+}
