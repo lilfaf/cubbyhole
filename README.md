@@ -5,7 +5,7 @@ Dropox like application
 
 ### Prerequisite
 
-- Postgresql
+- MySQL
 - Ruby > 1.9.3
 - Bundler
 

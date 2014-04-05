@@ -1,9 +1,9 @@
 common_settings: &common_settings
-  adapter: postgresql
-  encoding: unicode
+  adapter: mysql2
+  encoding: utf8
   pool: 5
-  username: postgres
-  password: postgres
+  username: root
+  password: root
   host: localhost
 
 development:

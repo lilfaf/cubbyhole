@@ -6,8 +6,8 @@ gem 'rails', '4.0.3'
 gem 'thin', '~> 1.6.2'
 gem 'unicorn'
 
-# Postgresql adapter
-gem 'pg', '~> 0.17.1'
+# MySQL adapter
+gem 'mysql2'
 
 # Tree data structure
 gem 'awesome_nested_set', '~> 3.0.0.rc.3'
