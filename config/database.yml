@@ -2,15 +2,17 @@ common_settings: &common_settings
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password: root
   host: localhost
+  encoding: utf8
 
 development:
   <<: *common_settings
   database: cubbyhole_development
+  username: root
+  password: root
 
 test:
   <<: *common_settings
   database: cubbyhole_test
   prepared_statements: false
+  username: travis
