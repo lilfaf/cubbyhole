@@ -2,6 +2,7 @@ nguage: ruby
 rvm:
     - 2.0.0-p451
 before_script:
+    - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
     - mysql -e 'create database cubbyhole_test;'
 env:
   global:

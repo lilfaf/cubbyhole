@@ -3,16 +3,14 @@ common_settings: &common_settings
   encoding: utf8
   pool: 5
   host: localhost
-  encoding: utf8
+  username: root
+  password: root
 
 development:
   <<: *common_settings
   database: cubbyhole_development
-  username: root
-  password: root
 
 test:
   <<: *common_settings
   database: cubbyhole_test
   prepared_statements: false
-  username: travis
