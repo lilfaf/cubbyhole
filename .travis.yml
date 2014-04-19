@@ -1,5 +1,5 @@
 nguage: ruby
 rvm:
-    - 2.0.0-451
+    - 2.0.0-p451
 before_script:
     - mysql -e 'create database cubbyhole_test;'
