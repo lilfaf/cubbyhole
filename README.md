@@ -1,6 +1,9 @@
 cubbyhole
 =========
 
+[![Build
+Status](https://travis-ci.org/lilfaf/cubbyhole.svg?branch=master)](https://travis-ci.org/lilfaf/cubbyhole)
+
 Dropox like application
 
 ### Prerequisite
