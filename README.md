@@ -11,8 +11,10 @@ Climate](https://codeclimate.com/github/lilfaf/cubbyhole.png)](https://codeclima
 ### Prerequisite
 
 - MySQL
+- NodeJS
 - Ruby > 1.9.3
 - Bundler
+- Bower `npm install -g bower`
 
 ### Usage
 

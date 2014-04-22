@@ -21,3 +21,6 @@ Gemfile.lock
 
 /.vagrant
 .env
+vendor/assets/bower_components
+.last_run.json
+.resultset.json

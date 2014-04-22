@@ -35,5 +35,8 @@ module Cubbyhole
       Devise::UnlocksController.layout "devise"
       Devise::PasswordsController.layout "devise"
     end
+
+    # Adds bower components to the assets pipeline
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
   end
 end

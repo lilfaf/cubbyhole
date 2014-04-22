@@ -22,6 +22,9 @@ sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get -y update
 sudo apt-get -y install nodejs
 
+# install bower
+sudo npm install bower -g
+
 # install rvm
 curl -L get.rvm.io | bash -s stable
 source /etc/profile.d/rvm.sh
@@ -38,6 +41,7 @@ sudo apt-get -y install imagemagick libmagickwand-dev
 gem install bundler
 cd /vagrant
 bundle
+bower install
 rake db:create:all
 rake db:migrate
 rake db:migrate RAILS_ENV=test

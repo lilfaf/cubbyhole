@@ -1,5 +1,3 @@
 #= require common
-#= require vendor/parallax
-
-jQuery ->
-  $(document).foundation()
+#= require parallax/deploy/parallax
+#= require parallax/deploy/jquery.parallax
