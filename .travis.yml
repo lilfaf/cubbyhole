@@ -1,9 +1,12 @@
-nguage: ruby
+language: ruby
 rvm:
     - 2.0.0-p451
 before_script:
     - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
     - mysql -e 'create database cubbyhole_test;'
+    - 'npm install'
+    - 'npm install -g bower'
+    - 'bower install'
 env:
   global:
     - secure: "DG67RWubnMoYKTtDVjCfHe2vsz4aea8xYSn9AaH3RPKNoeQC6re2RX48nFyavIlf80wwaXnlqatp6uXlUWWFfW8EeNpniRKnctenb6gXyJtm1RZbYUMpy15Dg/DCYZ7zhVxGJoWjF+VrFnAWZKmpwuq+pR9ik/PmYRCvpmYgJsM="
