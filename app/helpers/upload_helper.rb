@@ -28,10 +28,18 @@ module UploadHelper
         method: "post",
         authenticity_token: false,
         multipart: true,
-        data: {
+        data: ng_attributes.merge({
           post: @options[:post],
-          as: @options[:as]
-        }
+          as: @options[:as],
+        })
+      }
+    end
+
+    def ng_attributes
+      {
+        "ng-app" => "uploads",
+        "ng-controller" => "UploadsCtrl",
+        "file-upload" => "options"
       }
     end
 

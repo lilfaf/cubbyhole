@@ -1,3 +1,9 @@
 <%= s3_uploader_form post: api_assets_url, as: "file[key]" do %>
   <%= file_field_tag :file, multiple: true %>
+  <%= button_tag :upload, class: 'button radius', data: { 'ng-click' => 'submit()' } %>
+
+  <div ng-cloak  ng-repeat="file in queue">
+    <p>{{file.name}}</p>
+  </div>
 <% end %>
+

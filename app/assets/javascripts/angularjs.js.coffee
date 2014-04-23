@@ -1,7 +1,12 @@
 #= require common
 #= require angular
 #= require jquery.ui.widget
+#= require blueimp-load-image/js/load-image
+#= require blueimp-canvas-to-blob/js/canvas-to-blob
+#= require jquery-file-upload/js/jquery.iframe-transport
 #= require jquery-file-upload/js/jquery.fileupload
+#= require jquery-file-upload/js/jquery.fileupload-process
+#= require jquery-file-upload/js/jquery.fileupload-image
 #= require jquery-file-upload/js/jquery.fileupload-angular
 #= require angular/uploads
 ## require s3_uploads
