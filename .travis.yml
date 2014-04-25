@@ -8,9 +8,9 @@ before_script:
     - 'bower install'
 env:
   global:
-    - secure: "DG67RWubnMoYKTtDVjCfHe2vsz4aea8xYSn9AaH3RPKNoeQC6re2RX48nFyavIlf80wwaXnlqatp6uXlUWWFfW8EeNpniRKnctenb6gXyJtm1RZbYUMpy15Dg/DCYZ7zhVxGJoWjF+VrFnAWZKmpwuq+pR9ik/PmYRCvpmYgJsM="
-    - secure: "Kpq09Kk4ICOVg1lq8QHipZcRCz14fWDECzx9a4RQWZlv3O0ZxERriUgDKKaENO9FR/5CefhxDOHr+nCkBBuF/KRFXrHr5iCNBU7PeGz1PzdmE0nbjIwqZPyyajOzYBgQZRrC5bHe8uJJTIygOU5Ye4uS54pmE5YL8qJo6Ud+tbg="
-    - secure: "G9lWOMTuiNr+TlVyN9opUFt7sYwPWs2FBRhfRrQgIfMI2dAk5ABWToz6Hn0lWwJ8eFNJHyGXQkBqlKfTsilKcmdny1pt8E8AkjBFRJjvNW38/hYIH28eGRiQMt8flNyjbvqBj2gpDJp7fb/jQCL9oOhC65VODb+uwUK+wYAjaZg="
+    - secure: "QmMV1ULbfxTH/puF5hSTrQK62nxzF8nvZW4j4c/gdJgyEyAUiilKG95sAXjR7yfJUS9PQqCeJFpIB6jv5f9fY++/TX/O4Qj2a8Tv0a/+RR/Wv0PwLOwg98sgEhrxcFVuZU00cRUdYlq1CabRgbEqiX4LTLKag6ze5PpDtIQejj0="
+    - secure: "dAYq1uhd4n7vvkyVoWRSBeET5HKanisylUOxGwg5cK7XIkql8A1o9lRIx4XQgHXM47KQFty3tmFgTvNIzqbyNVuyq3l9/ki2CfaNd8FAgZ6dxgDX6y8e/WSOiPcrn6pgHPrbdr5Sb6S6CctFb2BFXJrU7g9cZKPBXRRKgUYeHa8="
+    - secure: "A9YSdbQZxUF0+46svoNTx5bMYMh7lxNqHpl/kPX86EWEAf1z+yt5mhurq3claxs5sU3TyS8D9td6EoYzwWgUwGBHu41fTDWq4CcHbefg+WnoKpzYPf5zAEB2BkLqeD4Jf+IU1KE3PO1d7cxuZ24WB9e1ynRkJhIy5YB8jchPzqY="
     - secure: "fq7guEZjbvprgYgvVrfPhE4KRGZtPwTbnkfAFKIn9wtSdowouKK6iXU0bkqz5RCl3M+Fp17C9+wGW7XH3W2gHBFgnx4dicatoq7g6+TBUPxSrTP1uLnydpYcYvzA7GwHCCdH4FkN72JmMKZQ3BREnHDLndyigkSpSKi6edkX/Hw="
     - secure: "Nfqy6atLy5bwle8J6YkyCdoi7VJtViIo4Dx1U14F0z/dx8cF8EIHn3ptYgvsjgsaxcsq4SaZ/URIVdWGRFpNPPiLTPcdiZD3ZdJQMDTQycrpDaSWYUzrkjcgrx8/WdhIWmbqIq6dXYNXAo6c1ual3TIR5lsExkQF7+PnKwvWDq8="
     - secure: "YoK7mq0mSTOuL63uiEOc5Gceby1RukAqoRpfNXpv7ETxg80tRimLDzQdEcmBZB1fGbdd+kht4h7QYGHC+lLR0qz7lHsTtU0ncpS0Z+0cpVH1DGDu++syqPndL2pWivhN13X5umfxnBZzUKRGoj0+dm5pWcYSu9QZZtNSNzQbzMQ="

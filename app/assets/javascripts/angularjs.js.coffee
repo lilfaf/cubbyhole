@@ -7,6 +7,9 @@
 #= require jquery-file-upload/js/jquery.fileupload
 #= require jquery-file-upload/js/jquery.fileupload-process
 #= require jquery-file-upload/js/jquery.fileupload-image
+#= require jquery-file-upload/js/jquery.fileupload-audio
+#= require jquery-file-upload/js/jquery.fileupload-video
+#= require jquery-file-upload/js/jquery.fileupload-validate
 #= require jquery-file-upload/js/jquery.fileupload-angular
 #= require angular/uploads
 ## require s3_uploads

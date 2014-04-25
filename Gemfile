@@ -41,6 +41,7 @@ gem 'unf'
 gem 'fog', '~> 1.21.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.2', groups: [:prodction, :development]
+gem 's3_direct_upload'
 
 # Common
 gem 'dotenv-rails', groups: [:development, :test]
