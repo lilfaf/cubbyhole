@@ -1,7 +1,13 @@
 Cubbyhole::Application.routes.draw do
   ActiveAdmin.routes(self)
   use_doorkeeper
-  devise_for :users
+
+  devise_for :users,
+    path: '',
+    path_names: {
+      sign_in: 'login',
+      sign_up: 'register'
+    }
 
   namespace :api, constraints: { format: 'json' } do
     resources :folders, except: [:index, :new, :edit] do
@@ -20,6 +26,5 @@ Cubbyhole::Application.routes.draw do
   resources :plans
   resources :payments, only: [:new, :create]
 
-  #match '/app' => 'main#index', via: :get
   root to: 'home#index'
 end
