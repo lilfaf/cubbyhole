@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
-    <title><%= content_for?(:title) ? yield(:title) : "Cubbyhole" %></title>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+<title><%= content_for?(:title) ? yield(:title) : "Cubbyhole" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
+<%= stylesheet_link_tag    "application" %>
+<%= javascript_include_tag "vendor/modernizr" %>
+<%= csrf_meta_tags %>
+</head>
 
-  <body>
-      <nav class="top-bar" data-topbar>
-        <ul class="title-area">
-          <li class="name">
-            <h1><%= link_to "Cubbyhole", user_signed_in? ? app_url : root_url %></h1>
-          </li>
-          <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-        </ul>
+<body>
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+    <h1><%= link_to "Cubbyhole", root_url %></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul>
 
-        <section class="top-bar-section">
-          <ul class="right">
-            <% if user_signed_in? %>
-              <li><%= link_to "Profile", edit_user_registration_url, class: "button secondary radius" %></li>
-              <li class="last"><%= link_to "Sign out", destroy_user_session_url, method: :delete, class: "button radius" %></li>
-            <% else %>
-              <li><a href="#">Features</a></li>
-              <li><a href="#">Prices</a></li>
-              <li><%= link_to "Sign up", new_user_registration_url, class: "button radius" %></li>
-              <li class="last"><%= link_to "Sign in", new_user_session_url, class: "button radius" %></li>
-            <% end %>
-          </ul>
-        </section>
-      </nav>
+  <section class="top-bar-section">
+    <ul class="right">
+    <% if user_signed_in? %>
+      <li><%= link_to "Profile", edit_user_registration_url, class: "button secondary radius" %></li>
+      <li class="last"><%= link_to "Sign out", destroy_user_session_url, method: :delete, class: "button radius" %></li>
+    <% else %>
+      <li><a href="#">Features</a></li>
+      <li><a href="#">Prices</a></li>
+      <li><%= link_to "Sign up", new_user_registration_url, class: "button radius" %></li>
+      <li class="last"><%= link_to "Sign in", new_user_session_url, class: "button radius" %></li>
+    <% end %>
+    </ul>
+  </section>
+</nav>
 
-      <%= display_flash_messages(notice: :standard) %>
+<%= display_flash_messages(notice: :standard) %>
 
-      <%= yield %>
+<%= yield %>
 
-      <div class="footer">
-        <div class="row">Cubbyhole - Supersonic cloud platform - <%= Time.now.year %></div>
-      </div>
-    <%= javascript_include_tag "application" %>
-    <%= content_for :js %>
-  </body>
+<div class="footer">
+  <div class="row">Cubbyhole - Supersonic cloud platform - <%= Time.now.year %></div>
+</div>
+<%= javascript_include_tag "application" %>
+<%= content_for :js %>
+</body>
 </html>

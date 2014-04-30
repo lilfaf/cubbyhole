@@ -7,7 +7,7 @@ feature "Users" do
 
   scenario "uploading an asset" do
     login_as(user)
-    visit app_url
+    visit root_url
     attach_file("file", "#{Rails.root}/spec/support/fixtures/rails.png")
     # submit requires phantomjs ?
   end
