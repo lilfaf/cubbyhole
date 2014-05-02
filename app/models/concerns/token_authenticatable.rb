@@ -10,10 +10,10 @@ module TokenAuthenticatable
   end
 
   def token
-    access_tokens.first.token || nil
+    access_tokens.first.token
   end
 
-  def delete_tokens
+  def delete_token
     access_tokens.delete_all
   end
 

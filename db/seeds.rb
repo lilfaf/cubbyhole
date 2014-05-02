@@ -45,4 +45,4 @@ User.create!(username: 'admin',
              password_confirmation: '12345678',
              admin: true)
 
-Doorkeeper::Application.create!(name: 'web')
+Doorkeeper::Application.create!(name: 'web', redirect_uri: 'urn:ietf:wg:oauth:2.0:oob')

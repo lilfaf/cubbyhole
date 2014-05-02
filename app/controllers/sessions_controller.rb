@@ -6,7 +6,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def destroy
-    resource.delete_tokens
+    current_user.delete_token
     super
   end
 end
