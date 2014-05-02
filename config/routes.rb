@@ -7,6 +7,10 @@ Cubbyhole::Application.routes.draw do
     path_names: {
       sign_in: 'login',
       sign_up: 'register'
+    },
+    controllers: {
+      registrations: 'registrations',
+      sessions: 'sessions'
     }
 
   namespace :api, constraints: { format: 'json' } do

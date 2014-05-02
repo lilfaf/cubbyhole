@@ -15,8 +15,12 @@ feature "Users" do
     )
   end
 
-  scenario "editing username" do
+  before(:each) do
     login_as(user)
+    user.generate_access_token!
+  end
+
+  scenario "editing username" do
     visit edit_user_registration_url(user)
     fill_in "Username", with: "newusername"
     fill_in "Current password", with: "12345678"
@@ -25,7 +29,6 @@ feature "Users" do
   end
 
   scenario "updating user plan" do
-    login_as(user)
     visit edit_user_registration_url(user)
     select "Starter", from: 'Plan'
     fill_in "Current password", with: "12345678"

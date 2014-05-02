@@ -26,6 +26,7 @@ gem 'activemerchant', '~> 1.42.4'
 # API
 gem 'rabl', '~> 0.9.3'
 gem 'oj', '~> 2.5.4'
+gem 'active_model_serializers'
 
 # Admin
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -35,6 +36,9 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
+gem 'ember-rails'
+gem 'ember-source', '1.5.0'
+gem 'gon', '~> 5.0.4'
 
 # Uploads
 gem 'unf'

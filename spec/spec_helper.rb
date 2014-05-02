@@ -28,4 +28,8 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.before(:each) do
+    create(:application, name: 'web')
+  end
 end

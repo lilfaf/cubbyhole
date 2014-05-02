@@ -9,6 +9,7 @@
 <%= stylesheet_link_tag    "application" %>
 <%= javascript_include_tag "vendor/modernizr" %>
 <%= csrf_meta_tags %>
+<%= include_gon %>
 </head>
 
 <body>
@@ -31,6 +32,6 @@
 <%= display_flash_messages(notice: :standard) %>
 
 <%= render "shared/upload_form"  %>
-<%= javascript_include_tag "application" %>
+<%= javascript_include_tag "cubbyhole" %>
 </body>
 </html>
