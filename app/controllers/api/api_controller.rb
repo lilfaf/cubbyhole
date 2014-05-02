@@ -32,7 +32,7 @@ class Api::ApiController < ActionController::Metal
 
   def current_user
     if doorkeeper_token
-      @current_user ||= User.find(doorkeeper_token.resource_owner_id)
+      @current_user ||= User.from_token(doorkeeper_token)
     end
   end
 

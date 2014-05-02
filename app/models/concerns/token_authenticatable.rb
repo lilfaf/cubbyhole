@@ -32,4 +32,10 @@ module TokenAuthenticatable
       use_refresh_token: false
     }
   end
+
+  module ClassMethods
+    def from_token(token)
+      find(token.resource_owner_id)
+    end
+  end
 end
