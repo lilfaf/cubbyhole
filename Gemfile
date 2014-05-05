@@ -24,7 +24,7 @@ gem 'foundation_rails_helper'
 gem 'activemerchant', '~> 1.42.4'
 
 # API
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.9.0.alpha1'
 
 # Admin
 gem 'activeadmin', github: 'gregbell/active_admin'
