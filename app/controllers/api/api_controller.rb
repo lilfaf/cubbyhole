@@ -1,26 +1,8 @@
-require 'api_responder'
+require 'api_controller_setup'
 require 'errors'
 
 class Api::ApiController < ActionController::Metal
-  include AbstractController::ViewPaths
-  include AbstractController::Callbacks
-
-  include ActiveSupport::Rescuable
-
-  include ActionController::Head
-  include ActionController::Rendering
-  include ActionController::ImplicitRender
-  include ActionController::MimeResponds
-  include ActionController::Rescue
-  include ActionController::StrongParameters
-
-  include Doorkeeper::Helpers::Filter
-
-  prepend_view_path File.join(Rails.root, 'app', 'views')
-  append_view_path File.expand_path('../../../views/api', __FILE__)
-
-  self.responder = ApiResponder
-  respond_to :json
+  include ApiControllerSetup
 
   # Handle exceptions and respond with a friendly error message
   rescue_from Exception, with: :error_during_processing
@@ -37,8 +19,7 @@ class Api::ApiController < ActionController::Metal
   end
 
   def invalid_record!(record)
-    @record = record
-    render 'errors/invalid_record', status: :unprocessable_entity
+    render json: { message: t('errors.invalid_record'), errors: record.errors }, status: :unprocessable_entity
   end
 
   private
@@ -50,15 +31,14 @@ class Api::ApiController < ActionController::Metal
   end
 
   def not_found
-    render 'errors/record_not_found', status: :not_found and return
+    render json: { message: t('errors.not_found') }, status: :not_found and return
   end
 
   def parameter_missing
-    @exception = exception
-    render 'errors/parameter_missing', status: :bad_request and return
+    render json: { message: t('errors.parameter_misssing', param: 'exception.param') }, status: :bad_request and return
   end
 
   def forbidden_operation
-    render 'errors/forbidden_operation', status: :forbidden and return
+    render json: { message: t('errors.forbidden_operation') }, status: forbidden and return
   end
 end

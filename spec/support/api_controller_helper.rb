@@ -12,7 +12,7 @@ module ApiControllerHelper
   end
 
   def json_response
-    Oj.load(response.body)
+    JSON.load(response.body)
   end
 
   def api_get(action, params={}, session=nil, flash=nil)

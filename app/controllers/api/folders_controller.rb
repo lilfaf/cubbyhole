@@ -11,7 +11,7 @@ class Api::FoldersController < Api::ApiController
                target.children + target.assets
              end
 
-    respond_with(@items)
+    respond_with(@items, each_serializer: ItemSerializer)
   end
 
   def show
@@ -24,7 +24,7 @@ class Api::FoldersController < Api::ApiController
 
     @folder = current_user.folders.new(parameters)
     if @folder.save
-      respond_with(@folder, status: 201, default_template: :show)
+      respond_with(@folder)
     else
       invalid_record!(@folder)
     end
@@ -37,7 +37,7 @@ class Api::FoldersController < Api::ApiController
     end
 
     if @folder.update_attributes(parameters)
-      respond_with(@folder, default_template: :show)
+      respond_with(@folder)
     else
       invalid_record!(@folder)
     end
@@ -45,7 +45,7 @@ class Api::FoldersController < Api::ApiController
 
   def destroy
     @folder.destroy
-    respond_with(@folder, status: 204)
+    head :no_content
   end
 
   def copy
@@ -53,7 +53,7 @@ class Api::FoldersController < Api::ApiController
     target = current_user.folders.find(target_id)
     begin
       @folder = @folder.copy(target)
-      respond_with(@folder, default_template: :show)
+      respond_with(@folder)
     rescue ActiveRecord::RecordInvalid => e
       invalid_record!(e.record)
     end

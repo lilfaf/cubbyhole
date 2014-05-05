@@ -7,7 +7,6 @@ class Api::AssetsController < Api::ApiController
               else
                 current_user.assets.roots
               end
-
     respond_with(@assets)
   end
 
@@ -25,7 +24,7 @@ class Api::AssetsController < Api::ApiController
              end
 
     if @asset.save
-      respond_with(@asset, status: 201, default_template: :show)
+      respond_with(@asset)
     else
       invalid_record!(@asset)
     end
@@ -46,7 +45,7 @@ class Api::AssetsController < Api::ApiController
     end
 
     if @asset.update_attributes(parameters)
-      respond_with(@asset, default_template: :show)
+      respond_with(@asset)
     else
       invalid_record!(@asset)
     end
@@ -54,7 +53,7 @@ class Api::AssetsController < Api::ApiController
 
   def destroy
     @asset.destroy
-    respond_with(@asset, status: 204)
+    head :no_content
   end
 
   def copy

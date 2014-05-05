@@ -167,7 +167,7 @@ describe Api::FoldersController do
       expect{
         api_post :copy, id: source.id, parent_id: destination.id
       }.to change{ current_user.folders.count }.by(1)
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(201)
       expect(json_response).to have_attributes(folder_attributes)
     end
   end

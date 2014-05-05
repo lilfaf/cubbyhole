@@ -24,8 +24,6 @@ gem 'foundation_rails_helper'
 gem 'activemerchant', '~> 1.42.4'
 
 # API
-gem 'rabl', '~> 0.9.3'
-gem 'oj', '~> 2.5.4'
 gem 'active_model_serializers'
 
 # Admin

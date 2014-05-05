@@ -1,15 +1,11 @@
 class ApiResponder < ActionController::Responder
-  def to_format
-    if template
-      render template, status: options[:status] || 200
+  def api_behavior(error)
+    if post?
+      display resource, status: :created
+    elsif put?
+      display resource, status: :ok
     else
       super
     end
-  rescue ActionView::MissingTemplate => e
-    api_behavior(e)
-  end
-
-  def template
-    controller.params[:template] || options[:default_template]
   end
 end
