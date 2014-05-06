@@ -1,14 +1,15 @@
-require 'api_controller_setup'
+require 'api_responder'
 require 'errors'
 
-class Api::ApiController < ActionController::Metal
-  include ApiControllerSetup
-
+class Api::ApiController < ActionController::Base
   # Handle exceptions and respond with a friendly error message
   rescue_from Exception, with: :error_during_processing
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
   rescue_from ActionController::ParameterMissing, with: :parameter_missing
   rescue_from Errors::ForbiddenOperation, with: :forbidden_operation
+
+  self.responder = ApiResponder
+  respond_to :json
 
   doorkeeper_for :all
 

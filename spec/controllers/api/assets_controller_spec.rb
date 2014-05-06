@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Api::AssetsController do
-  render_views
-
   let(:asset_attributes) { [:id, :name, :url, :size, :content_type, :etag, :created_at, :updated_at] }
 
   describe "indexing files" do

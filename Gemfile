@@ -50,6 +50,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'coveralls', require: false
 
 group :test do
+  gem 'minitest'
   gem 'rspec-rails', '~> 2.14.1'
   gem 'factory_girl_rails', '~> 4.4.1'
   gem 'database_cleaner', '~> 1.2.0'

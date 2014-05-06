@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Api::FoldersController do
-  render_views
-
   let(:item_attributes) { [:id, :name, :type] }
   let(:folder_attributes) { [:id, :name, :created_at, :updated_at] }
 
