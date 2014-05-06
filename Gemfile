@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.1.0'
 
 # Web server
 gem 'thin', '~> 1.6.2'
