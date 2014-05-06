@@ -6,6 +6,7 @@ before_script:
     - mysql -e 'create database cubbyhole_test;'
     - 'npm install -g bower'
     - 'bower install'
+    - 'bin/rake db:migrate RAILS_ENV=test'
 env:
   global:
     - secure: "QmMV1ULbfxTH/puF5hSTrQK62nxzF8nvZW4j4c/gdJgyEyAUiilKG95sAXjR7yfJUS9PQqCeJFpIB6jv5f9fY++/TX/O4Qj2a8Tv0a/+RR/Wv0PwLOwg98sgEhrxcFVuZU00cRUdYlq1CabRgbEqiX4LTLKag6ze5PpDtIQejj0="
