@@ -20,8 +20,6 @@ describe User do
 
   it { should ensure_length_of(:password).is_at_least(8) }
 
-  it_behaves_like 'token_authenticatable'
-
   it 'should delete dependent folder' do
     folder = create(:folder)
     expect{ folder.user.destroy }.to change{ Folder.count }.by(-1)

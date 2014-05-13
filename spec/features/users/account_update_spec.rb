@@ -17,7 +17,6 @@ feature "Users" do
 
   before(:each) do
     login_as(user)
-    user.generate_access_token!
   end
 
   scenario "editing username" do
