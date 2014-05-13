@@ -1,0 +1,7 @@
+<h1>New folder</h1>
+<a class="close-reveal-modal">&#215;</a>
+<%= form_for @folder, remote: true do |f| %>
+  <%= f.hidden_field :parent_id, value: @parent.id if @parent %>
+  <%= f.text_field :name, autofocus: true %>
+  <%= f.submit %>
+<% end %>

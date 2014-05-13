@@ -11,7 +11,7 @@ feature "Users" do
       fill_in "Password", with: "12345678"
       click_button "Sign in"
       expect(page).to have_content("Signed in successfully")
-      expect(page.current_path).to eq(root_path)
+      expect(page.current_path).to eq(folders_path)
     end
 
     scenario "sign in a user with email and password" do
@@ -20,7 +20,7 @@ feature "Users" do
       fill_in "Password", with: "12345678"
       click_button "Sign in"
       expect(page).to have_content("Signed in successfully")
-      expect(page.current_path).to eq(root_path)
+      expect(page.current_path).to eq(folders_path)
     end
   end
 

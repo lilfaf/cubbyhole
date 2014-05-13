@@ -11,6 +11,7 @@
 
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
+@import "foundation-icons";
 
 // $experimental: true;
 
@@ -1032,8 +1033,8 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, "Asap" ,Arial, sans
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9  ;
+$table-bg: #fff;
+$table-even-row-bg: #f5f5f5;
 
 // These control the table cell border style
 // $table-border-style: solid;
@@ -1048,10 +1049,10 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, "Asap" ,Arial, sans
 // $table-head-padding: rem-calc(8 10 10);
 
 // These control the row padding and font styles
-// $table-row-padding: rem-calc(9 10);
-// $table-row-font-size: rem-calc(14);
-// $table-row-font-color: #222;
-// $table-line-height: rem-calc(18);
+$table-row-padding: rem-calc(9 10);
+$table-row-font-size: rem-calc(14);
+$table-row-font-color: #222;
+$table-line-height: rem-calc(18);
 
 // These are for controlling the display and margin of tables
 // $table-display: table-cell;
@@ -1212,7 +1213,7 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, "Asap" ,Arial, sans
   text-align:center;
   overflow:hidden;
   p{
-    margin-top:200px;
+    margin-top:-160px;
     display:block;
     color:#fff;
     font-size:30pt;
@@ -1273,4 +1274,16 @@ small.error{
 .alert-box.alert{
   background-color: #E4644F;
   border-color: #E4644F;
+}
+
+.main {
+  margin-top: 80px;
+}
+
+table {
+  border: none;
+  border-collapse: collapse;
+  tr {
+    border-top: 1px solid #ddd;
+  }
 }

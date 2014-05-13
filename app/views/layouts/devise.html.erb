@@ -17,18 +17,10 @@
     <li class="name">
     <h1><%= link_to "Cubbyhole", root_url %></h1>
     </li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
-
-  <section class="top-bar-section">
-    <ul class="right">
-      <li><%= link_to "Sign up", new_user_registration_url, class: "button radius" %></li>
-      <li class="last"><%= link_to "Sign in", new_user_session_url, class: "button radius" %></li>
-    </ul>
-  </section>
 </nav>
 
-<%= display_flash_messages(notice: :standard) %>
+<%= display_flash_messages %>
 
 <div class="row">
   <div class="small-6 large-centered columns"><%= yield %></div>

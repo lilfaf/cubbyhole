@@ -11,7 +11,7 @@ class Api::FoldersController < Api::ApiController
                target.children + target.assets
              end
 
-    respond_with(@items, each_serializer: ItemSerializer)
+    respond_with(@items, serializer: CustomArraySerializer)
   end
 
   def show

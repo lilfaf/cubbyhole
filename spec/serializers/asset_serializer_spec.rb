@@ -5,6 +5,7 @@ describe AssetSerializer do
   let(:output) do
     {
       id: asset.id,
+      type: 'file',
       name: asset.name,
       size: asset.size,
       content_type: asset.content_type,

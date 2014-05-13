@@ -1,0 +1,4 @@
+$('#main-modal').foundation('reveal', 'close');
+$(document).on('closed', '[data-reveal]', function () {
+  location.reload();
+});

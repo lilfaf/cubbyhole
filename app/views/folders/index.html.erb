@@ -1,0 +1,7 @@
+<table class="large-12 columns">
+<% @items.each do |item| %>
+  <tr data-link="<%= folder_path(item) %>">
+    <td><%= item.name %></td>
+  </tr>
+<% end %>
+</table>

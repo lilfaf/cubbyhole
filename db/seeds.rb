@@ -35,10 +35,13 @@ Plan.create!(name: 'platinium',
              max_bandwidth_down: 0,
              daily_shared_links_quota: 0)
 
-User.create!(username: 'member',
-             email: 'member@example.com',
-             password: '12345678',
-             password_confirmation: '12345678')
+user = User.create!(username: 'member',
+                    email: 'member@example.com',
+                    password: '12345678',
+                    password_confirmation: '12345678')
+
+2.times { |i| Folder.create!(name: "Test folder #{i}", user: user) }
+
 User.create!(username: 'admin',
              email: 'admin@example.com',
              password: '12345678',

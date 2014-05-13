@@ -29,19 +29,20 @@
       <li><a href="#">Features</a></li>
       <li><a href="#">Prices</a></li>
       <li><%= link_to "Sign up", new_user_registration_url, class: "button radius" %></li>
-      <li class="last"><%= link_to "Sign in", new_user_session_url, class: "button radius" %></li>
+      <li class="last"><%= link_to "Login", new_user_session_url, class: "button radius" %></li>
     <% end %>
     </ul>
   </section>
 </nav>
 
-<%= display_flash_messages(notice: :standard) %>
+<%= display_flash_messages %>
 
 <%= yield %>
 
 <div class="footer">
   <div class="row">Cubbyhole - Supersonic cloud platform - <%= Time.now.year %></div>
 </div>
+
 <%= javascript_include_tag "application" %>
 <%= content_for :js %>
 </body>

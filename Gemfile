@@ -18,7 +18,7 @@ gem 'doorkeeper', '~> 1.0.0'
 
 # Foundation
 gem 'foundation-rails'
-gem 'foundation_rails_helper'
+gem 'foundation_rails_helper', github: 'dsandstrom/foundation_rails_helper', branch: 'fix-flash-notice'
 
 # Payment
 gem 'activemerchant', '~> 1.42.4'
@@ -34,9 +34,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'ember-rails'
-gem 'ember-source', '1.5.0'
-gem 'gon', '~> 5.0.4'
+gem 'foundation-icons-sass-rails'
 
 # Uploads
 gem 'unf'

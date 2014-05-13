@@ -27,7 +27,9 @@ Cubbyhole::Application.routes.draw do
       end
     end
   end
+
   resources :plans
+  resources :folders
   resources :payments, only: [:new, :create]
 
   root to: 'home#index'

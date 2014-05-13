@@ -5,6 +5,7 @@ describe FolderSerializer do
   let(:output) do
     {
       id: folder.id,
+      type: 'folder',
       name: folder.name,
       created_at: folder.created_at,
       updated_at: folder.updated_at

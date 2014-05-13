@@ -4,6 +4,8 @@ class Folder < ActiveRecord::Base
   has_many :assets, dependent: :destroy
   belongs_to :user
 
+  default_scope { order('name ASC') }
+
   validates :name,
     presence: true,
     uniqueness: {

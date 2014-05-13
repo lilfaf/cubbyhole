@@ -9,7 +9,6 @@
 <%= stylesheet_link_tag    "application" %>
 <%= javascript_include_tag "vendor/modernizr" %>
 <%= csrf_meta_tags %>
-<%= include_gon %>
 </head>
 
 <body>
@@ -29,9 +28,23 @@
   </section>
 </nav>
 
-<%= display_flash_messages(notice: :standard) %>
+<%= display_flash_messages %>
+
+<div class="container main">
+  <div class="row">
+    <%= button_tag class: 'radius', data: { "reveal-ajax" => new_folder_path(parent_id: @folder), "reveal-id" => "main-modal" } do %>
+      <i class="fi-folder-add"></i>
+      New Folder
+    <% end %>
+
+    <%= yield %>
+  </div>
+</div>
+
+<div id="main-modal" class="reveal-modal small" data-reveal></div>
 
 <%= render "shared/upload_form"  %>
-<%= javascript_include_tag "cubbyhole" %>
+
+<%= javascript_include_tag "application" %>
 </body>
 </html>
