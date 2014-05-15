@@ -1313,6 +1313,10 @@ table {
   font-size: 24px;
 }
 
+table tr td:first-child {
+  width: 30px;
+}
+
 table tr td:last-child {
   width: 30px;
 

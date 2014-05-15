@@ -1,4 +1,5 @@
-<tr data-link="<%= folder_path(item) %>" id="folder-<%= item.id %>">
+<tr id="<%= item.class.name.downcase %>-<%= item.id %>" <%= "data-link=#{folder_path(item)}" if item.is_a?(Folder) %>>
+  <td><%= foundation_icon_for(item) %></td>
   <td><%= item.name %></td>
   <td>
     <%= link_to '×', folder_path(item.id), class: 'delete close large-icon pull-left', data: { confirm: "Are you sure?" }, method: :delete, remote: true %>
