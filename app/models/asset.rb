@@ -41,19 +41,15 @@ class Asset < ActiveRecord::Base
   end
 
   # Set asset metadata from the direct upload key
-  # Retry logic handles an eventual S3 lag.
   def set_asset_metadata
-    tries ||= 5
-    s3_url_data = S3_URL_FORMAT.match(key)
-    s3 = AWS::S3.new
-    headers = s3.buckets[S3DirectUpload.config.bucket].objects[s3_url_data[:path]].head
+    upload_data = S3_URL_FORMAT.match(key)
 
-    self.name = s3_url_data[:filename]
-    self.size = headers.content_length
-    self.etag = headers.etag
-    self.content_type = headers.content_type
-  rescue AWS::S3::Errors::NoSuchKey => e
-    tries -= 1
-    sleep(1) and retry if tries > 0
+    storage = asset.class.storage.new(asset)
+    headers = storage.connection.head_object(CarrierWave::Uploader::Base.fog_directory, upload_data[:path]).headers
+
+    self.name = upload_data[:filename]
+    self.size = headers['Content-Length']
+    self.etag = headers['Etag']
+    self.content_type = headers['Content-Type']
   end
 end
