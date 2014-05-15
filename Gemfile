@@ -35,6 +35,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'foundation-icons-sass-rails'
+gem 'bower-rails', '~> 0.7.2'
 
 # Uploads
 gem 'unf'
@@ -42,6 +43,7 @@ gem 'fog', '~> 1.21.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.2', groups: [:prodction, :development]
 gem 's3_direct_upload'
+gem 'aws-sdk', '~> 1.40.2'
 
 # Common
 gem 'dotenv-rails', groups: [:development, :test]
@@ -55,4 +57,5 @@ group :test do
   gem 'shoulda-matchers', '~> 2.5.0'
   gem 'capybara', '~> 2.2.1'
   gem 'oauth2', '~> 0.9.3'
+  gem 'poltergeist', '~> 1.5.0'
 end

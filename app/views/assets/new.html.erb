@@ -1,0 +1,15 @@
+<h1>Upload files</h1>
+<a class="close-reveal-modal">&#215;</a>
+
+<%= s3_uploader_form callback_url: assets_path(parent_id: @parent_folder), callback_param: 'asset[key]', acl: 'private', max_file_size: 50.gigabytes, id: 's3upload' do %>
+  <%= file_field_tag :file, multiple: true %>
+<% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+<div id="file-{%=o.unique_id%}" class="upload list">
+  <h3><small>{%=o.name%}</small></h3>
+  <div class="progress radius success">
+    <div class="meter bar" style="width: 0%"></div>
+  </div>
+</div>
+</script>

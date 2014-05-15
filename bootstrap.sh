@@ -41,7 +41,7 @@ sudo apt-get -y install imagemagick libmagickwand-dev
 gem install bundler
 cd /vagrant
 bundle
-bower install
+rake bower:install
 rake db:create:all
 rake db:migrate
 rake db:migrate RAILS_ENV=test

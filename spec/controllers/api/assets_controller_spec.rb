@@ -43,7 +43,7 @@ describe Api::AssetsController do
 
   describe "creating an asset" do
     it "should fail with invalid attributes" do
-      api_post :create, parent_id: 0, file: build(:asset, key: '123').attributes
+      api_post :create, parent_id: 0, file: build(:asset, size: '', content_type: '', etag: '').attributes
       expect(json_response['errors'].keys).to eq(['size', 'content_type', 'etag'])
       assert_invalid_record!
     end

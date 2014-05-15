@@ -1,6 +1,6 @@
 jQuery ->
-  $('tr[data-link]').click ->
-    window.location = $(@).data('link')
+  $('tr[data-link]').click (e) ->
+    window.location = $(@).data('link') unless $(e.target).hasClass('close')
 
   $(document).on 'ajax:error', '#new_folder',  (evt, xhr, status, error) ->
     $('.errors').removeClass('error')

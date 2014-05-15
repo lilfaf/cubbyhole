@@ -48,9 +48,9 @@ describe Asset do
 
   it "should set asset metadata" do
     asset = create(:asset)
-    expect(asset.size).to eq(84889)
+    expect(asset.size).to eq(123)
     expect(asset.content_type).to eq('image/png')
-    expect(asset.etag).to eq('110c700b3c4b02286cbfa3b700af8a57')
+    expect(asset.etag).to eq('12345678')
   end
 
   it "should not be valid with invalid key" do

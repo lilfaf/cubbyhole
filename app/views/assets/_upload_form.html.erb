@@ -1,0 +1,4 @@
+<%= s3_uploader_form callback_url: assets_path, callback_param: 'asset[key]', acl: 'private', max_file_size: 50.gigabytes, id: 's3upload' do %>
+  <%= file_field_tag :file, multiple: true %>
+<% end %>
+

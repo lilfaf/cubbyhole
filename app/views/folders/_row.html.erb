@@ -1,0 +1,6 @@
+<tr data-link="<%= folder_path(item) %>" id="folder-<%= item.id %>">
+  <td><%= item.name %></td>
+  <td>
+    <%= link_to '×', folder_path(item.id), class: 'delete close large-icon pull-left', data: { confirm: "Are you sure?" }, method: :delete, remote: true %>
+  </td>
+</tr>

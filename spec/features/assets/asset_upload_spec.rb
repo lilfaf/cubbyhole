@@ -5,10 +5,12 @@ feature "Users" do
 
   let!(:user) { create(:user) }
 
-  scenario "uploading an asset" do
+  scenario "uploading an asset", js: true do
     login_as(user)
-    visit root_url
+    visit root_path
+    click_button 'Upload'
     attach_file("file", "#{Rails.root}/spec/support/fixtures/rails.png")
-    # submit requires phantomjs ?
+
+    # TODO
   end
 end

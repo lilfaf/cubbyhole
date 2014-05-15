@@ -36,6 +36,11 @@ class FoldersController < ApplicationController
     end
   end
 
+  def destroy
+    @folder = Folder.find(params[:id])
+    @folder.destroy
+  end
+
   private
 
   def folder_params

@@ -32,6 +32,11 @@
 
 <div class="container main">
   <div class="row">
+    <%= button_tag class: 'success radius', data: { "reveal-ajax" => new_asset_path(parent_id: @folder), "reveal-id" => "main-modal" } do %>
+      <i class="fi-upload"></i>
+      Upload
+    <% end %>
+
     <%= button_tag class: 'radius', data: { "reveal-ajax" => new_folder_path(parent_id: @folder), "reveal-id" => "main-modal" } do %>
       <i class="fi-folder-add"></i>
       New Folder
@@ -42,8 +47,6 @@
 </div>
 
 <div id="main-modal" class="reveal-modal small" data-reveal></div>
-
-<%= render "shared/upload_form"  %>
 
 <%= javascript_include_tag "application" %>
 </body>
