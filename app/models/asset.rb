@@ -8,7 +8,6 @@ class Asset < ActiveRecord::Base
   mount_uploader :asset, AssetUploader
 
   validates :name, presence: true, uniqueness: { scope: :folder_id, case_sensitive: false }
-
   validates :key, presence: true, format: { with: S3_URL_FORMAT }
   validates :size, presence: true
   validates :content_type, presence: true

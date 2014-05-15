@@ -1276,8 +1276,13 @@ small.error{
   border-color: #E4644F;
 }
 
-.main {
-  margin-top: 80px;
+.buttons-bar {
+  margin-top: 60px;
+  margin-bottom: 20px;
+
+  button {
+    margin-right: 10px;
+  }
 }
 
 .list {

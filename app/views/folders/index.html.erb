@@ -1,5 +1,17 @@
+<div class="buttons-bar">
+  <%= button_tag class: 'success radius', data: { "reveal-ajax" => new_asset_path(parent_id: @folder), "reveal-id" => "main-modal" } do %>
+  <i class="fi-upload"></i>
+  Upload
+  <% end %>
+
+  <%= button_tag class: 'radius', data: { "reveal-ajax" => new_folder_path(parent_id: @folder), "reveal-id" => "main-modal" } do %>
+  <i class="fi-folder-add"></i>
+  New Folder
+  <% end %>
+</div>
+
 <table id="content-list" class="large-12 columns">
-<% @items.each do |item| %>
+  <% @items.each do |item| %>
   <%= render partial: 'row', object: item, as: :item %>
-<% end %>
+  <% end %>
 </table>
