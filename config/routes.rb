@@ -1,5 +1,12 @@
+require 'sidekiq/web'
+
 Cubbyhole::Application.routes.draw do
   ActiveAdmin.routes(self)
+
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web, at: '/sidekiq'
+  end
+
   use_doorkeeper
 
   devise_for :users,

@@ -17,6 +17,7 @@ class Asset < ActiveRecord::Base
   scope :roots, -> { where(folder_id: nil) }
 
   before_validation :set_asset_metadata, on: :create
+  after_create :enqueue_processing
 
   def url
     asset.authenticated_url
@@ -41,14 +42,25 @@ class Asset < ActiveRecord::Base
 
   # Set asset metadata from the direct upload key
   def set_asset_metadata
-    upload_data = S3_URL_FORMAT.match(key)
-
-    storage = asset.class.storage.new(asset)
-    headers = storage.connection.head_object(CarrierWave::Uploader::Base.fog_directory, upload_data[:path]).headers
+    headers = fog_connection.head_object(CarrierWave::Uploader::Base.fog_directory, upload_data[:path]).headers
 
     self.name = upload_data[:filename]
     self.size = headers['Content-Length']
     self.etag = headers['Etag']
     self.content_type = headers['Content-Type']
+  end
+
+  # Enqueue final processing and cleanup tasks
+  def enqueue_processing
+    worker = post_processing_required? ? ImageWorker : AssetWorker
+    worker.perform_async(id)
+  end
+
+  def upload_data
+    S3_URL_FORMAT.match(key)
+  end
+
+  def fog_connection
+    asset.class.storage.new(asset).connection
   end
 end

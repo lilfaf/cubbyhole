@@ -19,14 +19,6 @@ class AssetsController < ApplicationController
 
     @asset.user = current_user
     @asset.save
-
-    #respond_to do |format|
-    #  if @asset.save
-    #    format.js
-    #  else
-    #    format.json { render json: @asset.errors, status: :unprocessable_entity }
-    #  end
-    #end
   end
 
   private

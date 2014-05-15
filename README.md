@@ -38,7 +38,7 @@ rspec # run all test!
 Then start the web server
 
 ```bash
-rails s # thin
+foreman start # thin
 unicorn_rails # nginx + unicorn
 ```
 

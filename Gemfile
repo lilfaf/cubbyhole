@@ -5,6 +5,7 @@ gem 'rails', '4.1.1'
 # Web server
 gem 'thin', '~> 1.6.2'
 gem 'unicorn'
+gem 'foreman'
 
 # MySQL adapter
 gem 'mysql2'
@@ -43,6 +44,11 @@ gem 'fog', '~> 1.21.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.2', groups: [:prodction, :development]
 gem 's3_direct_upload'
+
+# Background jobs
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 # Common
 gem 'dotenv-rails', groups: [:development, :test]
