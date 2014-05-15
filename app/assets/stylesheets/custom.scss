@@ -1267,8 +1267,12 @@ $table-line-height: rem-calc(22);
   margin-bottom:0;
 }
 
-small.error{
+small.error {
   background-color: #E4644F;
+
+  &.radius {
+    border-radius: 2px;
+  }
 }
 
 .alert-box.alert{
@@ -1327,14 +1331,5 @@ table tr td:last-child {
     &:hover {
       color: gray;
     }
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .pull-left {
-    float: left !important;
-  }
-  .pull-right {
-    float: right !important;
   }
 }
