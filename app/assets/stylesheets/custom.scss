@@ -1314,7 +1314,13 @@ table {
 }
 
 .large-icon {
-  font-size: 24px;
+  font-size: 40px;
+}
+
+.th {
+  border: 0px;
+  width: 35px;
+  height: 35px;
 }
 
 table tr td:first-child {
@@ -1327,6 +1333,7 @@ table tr td:last-child {
   .close {
     visibility: hidden;
     color: #ddd;
+    font-size: 25px;
 
     &:hover {
       color: gray;

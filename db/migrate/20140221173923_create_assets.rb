@@ -9,7 +9,7 @@ class CreateAssets < ActiveRecord::Migration
       t.float :size
       t.string :content_type
       t.string :etag
-      t.boolean :processed, null: false, default: false
+      t.boolean :processed, null: false, default: 0
 
       t.timestamps
     end

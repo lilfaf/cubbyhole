@@ -1,5 +1,5 @@
 <tr id="<%= item.class.name.downcase %>-<%= item.id %>" <%= "data-link=#{folder_path(item)}" if item.is_a?(Folder) %>>
-  <td><%= foundation_icon_for(item) %></td>
+  <td><%= thumbnail_for(item) %></td>
   <td><%= item.name %></td>
   <td>
     <%= link_to '×', polymorphic_path(item), class: 'close large-icon left', data: { confirm: "Are you sure?" }, method: :delete, remote: true %>

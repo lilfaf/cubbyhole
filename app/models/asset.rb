@@ -35,11 +35,6 @@ class Asset < ActiveRecord::Base
     write_attribute(:key, (CGI.unescape(url) rescue nil))
   end
 
-  # Determines if file requires post-processing (image resizing, etc)
-  def post_processing_required?
-    %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|pjpeg|png|x-png)$}.match(content_type).present?
-  end
-
   # Set asset metadata from the direct upload key
   def set_asset_metadata
     headers = fog_connection.head_object(CarrierWave::Uploader::Base.fog_directory, upload_data[:path]).headers
@@ -52,8 +47,12 @@ class Asset < ActiveRecord::Base
 
   # Enqueue final processing and cleanup tasks
   def enqueue_processing
-    worker = post_processing_required? ? ImageWorker : AssetWorker
+    worker = is_image? ? ImageWorker : AssetWorker
     worker.perform_async(id)
+  end
+
+  def is_image?
+    %r{^(image|(x-)?application)/(bmp|gif|jpeg|jpg|pjpeg|png|x-png)$}.match(content_type).present?
   end
 
   def upload_data

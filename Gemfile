@@ -42,13 +42,16 @@ gem 'bower-rails', '~> 0.7.2'
 gem 'unf'
 gem 'fog', '~> 1.21.0'
 gem 'carrierwave', '~> 0.10.0'
-gem 'rmagick', '~> 2.13.2', groups: [:prodction, :development]
+gem 'rmagick', require: 'RMagick'
 gem 's3_direct_upload'
 
 # Background jobs
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+
+# Web sockets
+gem 'websocket-rails'
 
 # Common
 gem 'dotenv-rails', groups: [:development, :test]
