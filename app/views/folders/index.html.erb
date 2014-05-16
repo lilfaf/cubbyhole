@@ -10,6 +10,8 @@
   <% end %>
 </div>
 
+<%= breadcrumbs(@folder) %>
+
 <table id="content-list" class="large-12 columns">
   <% @items.each do |item| %>
   <%= render partial: 'row', object: item, as: :item %>

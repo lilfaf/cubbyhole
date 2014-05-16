@@ -1,7 +1,7 @@
 common_settings: &common_settings
   adapter: mysql2
   encoding: utf8
-  pool: 5
+  pool: 20
   host: localhost
   username: root
   password: root

@@ -37,7 +37,7 @@ class FoldersController < ApplicationController
   end
 
   def destroy
-    @folder = Folder.find(params[:id])
+    @folder = current_user.folders.find(params[:id])
     @folder.destroy
   end
 

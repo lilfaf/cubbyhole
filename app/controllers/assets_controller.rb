@@ -21,6 +21,11 @@ class AssetsController < ApplicationController
     @asset.save
   end
 
+  def destroy
+    @asset = current_user.assets.find(params[:id])
+    @asset.destroy
+  end
+
   private
 
   def load_parent_folder

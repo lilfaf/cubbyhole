@@ -13,7 +13,7 @@ class Asset < ActiveRecord::Base
   validates :content_type, presence: true
   validates :etag, presence: true
 
-  default_scope { where(processed: true) }
+  default_scope { where(processed: true).order('name ASC') }
   scope :roots, -> { where(folder_id: nil) }
 
   before_validation :set_asset_metadata, on: :create

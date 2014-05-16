@@ -1,0 +1,3 @@
+<% if @asset.destroyed? %>
+  $("#asset-<%= @asset.id %>").remove();
+<% end %>

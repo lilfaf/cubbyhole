@@ -2,6 +2,6 @@
   <td><%= foundation_icon_for(item) %></td>
   <td><%= item.name %></td>
   <td>
-    <%= link_to '×', folder_path(item.id), class: 'close large-icon left', data: { confirm: "Are you sure?" }, method: :delete, remote: true %>
+    <%= link_to '×', polymorphic_path(item), class: 'close large-icon left', data: { confirm: "Are you sure?" }, method: :delete, remote: true %>
   </td>
 </tr>
