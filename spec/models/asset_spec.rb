@@ -33,16 +33,16 @@ describe Asset do
     expect(Asset.all).to match_array([asset])
   end
 
-  describe "#post_processing_required?" do
+  describe "#is_image?" do
     it "should return true if the asset is an image" do
-      expect(create(:asset).post_processing_required?).to eq(true)
+      expect(create(:asset).is_image?).to eq(true)
     end
 
     it "should return false if the asset is not an image" do
       asset = create(:asset)
       asset.content_type = 'video/mp4'
       asset.save
-      expect(asset.post_processing_required?).to eq(false)
+      expect(asset.is_image?).to eq(false)
     end
   end
 
