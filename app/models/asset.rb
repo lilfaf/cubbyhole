@@ -45,7 +45,6 @@ class Asset < ActiveRecord::Base
     self.content_type = headers['Content-Type']
   end
 
-  # Enqueue final processing and cleanup tasks
   def enqueue_processing
     worker = is_image? ? ImageWorker : AssetWorker
     worker.perform_async(id)

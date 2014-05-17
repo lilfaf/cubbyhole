@@ -1,0 +1,9 @@
+jQuery ->
+  current_user = JSON.parse(gon.current_user)
+  if current_user
+    dispatcher = new WebSocketRails('localhost:3000/websocket')
+    channel = dispatcher.subscribe(current_user.username)
+
+    channel.bind 'picture_processed', (data) ->
+      console.log data.url
+      $("#asset-#{data.id} td:first-child a img").attr('src', data.url)

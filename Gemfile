@@ -37,6 +37,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'foundation-icons-sass-rails'
 gem 'bower-rails', '~> 0.7.2'
+gem 'gon', '~> 5.0.4'
 
 # Uploads
 gem 'unf'

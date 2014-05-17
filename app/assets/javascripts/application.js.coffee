@@ -5,7 +5,9 @@
 #= require websocket_rails/main
 #= require parallax/deploy/parallax
 #= require parallax/deploy/jquery.parallax
+#= require websockets
 #= require_tree
 
 jQuery ->
   $(document).foundation()
+

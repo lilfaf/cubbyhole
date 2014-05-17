@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_current_user_to_js, if: :user_signed_in?
 
   protected
 
@@ -35,5 +36,9 @@ class ApplicationController < ActionController::Base
   def current_admin
     return nil if user_signed_in? && !current_user.admin?
     current_user
+  end
+
+  def set_current_user_to_js
+    gon.current_user = UserSerializer.new(current_user).to_json
   end
 end
