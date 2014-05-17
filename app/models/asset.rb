@@ -17,7 +17,7 @@ class Asset < ActiveRecord::Base
   scope :roots, -> { where(folder_id: nil) }
 
   before_validation :set_asset_metadata, on: :create
-  after_create :enqueue_processing
+  after_commit :enqueue_processing, on: :create
 
   def url
     asset.authenticated_url
