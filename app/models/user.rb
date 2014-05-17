@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :folders, dependent: :destroy
   has_many :assets, dependent: :destroy
 
+  mount_uploader :avatar, AvatarUploader
+
   validates :username,
     presence: true,
     uniqueness: true,

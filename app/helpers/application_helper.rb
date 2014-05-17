@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def thumbnail_for(resource)
     if resource.is_a?(Asset) && resource.is_image?
-      link_to nil, class: 'th' do
+      content_tag 'div', class: 'th' do
         image_tag resource.asset.thumb.url
       end
     else

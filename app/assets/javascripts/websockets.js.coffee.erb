@@ -5,4 +5,4 @@ jQuery ->
     channel = dispatcher.subscribe(current_user.username)
 
     channel.bind 'picture_processed', (data) ->
-      $("#asset-#{data.id} td:first-child a img").attr('src', data.url)
+      $("#asset-#{data.id} td:first-child .th img").attr('src', data.url)

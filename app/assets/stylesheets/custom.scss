@@ -1089,6 +1089,7 @@ $table-line-height: rem-calc(22);
 // $thumb-border-color: #fff;
 // $thumb-box-shadow: 0 0 0 1px rgba(#000,.2);
 // $thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0.5);
+$thumb-box-shadow-hover: 0px;
 
 // Radius and transition speed for thumbs
 // $thumb-radius: $global-radius;
@@ -1317,7 +1318,7 @@ table {
   font-size: 40px;
 }
 
-.th {
+table .th {
   border: 0px;
   width: 35px;
   height: 35px;
@@ -1343,4 +1344,19 @@ table tr td:last-child {
 
 .upload h6 {
   font-weight: 300;
+}
+
+.has-dropdown .drop-context {
+  img {
+    margin-left: 10px;
+    padding-bottom: 3px;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      background: #333333 !important;
+    }
+  }
 }
