@@ -12,9 +12,11 @@ Climate](https://codeclimate.com/github/lilfaf/cubbyhole.png)](https://codeclima
 
 - MySQL
 - NodeJS
+- Redis
 - Ruby > 1.9.3
 - Bundler
 - Bower `npm install -g bower`
+- PhanthomJS (for testing)
 
 ### Usage
 
