@@ -67,5 +67,4 @@ group :test do
   gem 'capybara', '~> 2.2.1'
   gem 'oauth2', '~> 0.9.3'
   gem 'poltergeist', '~> 1.5.0'
-  gem 'nyan-cat-formatter'
 end

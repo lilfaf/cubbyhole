@@ -25,6 +25,7 @@ feature "Users" do
     fill_in "Current password", with: "12345678"
     click_button "Update"
     expect(page).to have_content("You updated your account successfully")
+    expect(page.current_path).to eq(edit_user_registration_path)
   end
 
   scenario "updating user plan" do
@@ -34,5 +35,6 @@ feature "Users" do
     click_button "Update"
     expect(page).to have_content("You updated your account successfully")
     expect(user.reload.plan).to eq(starter_plan)
+    expect(page.current_path).to eq(edit_user_registration_path)
   end
 end
