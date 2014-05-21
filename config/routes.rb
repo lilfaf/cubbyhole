@@ -19,25 +19,29 @@ Cubbyhole::Application.routes.draw do
       registrations: :registrations
     }
 
-  namespace :api, constraints: { format: 'json' } do
-    resources :folders, except: [:index, :new, :edit] do
-      member do
-        get :items, to: 'folders#index'
-        post :copy
+    namespace :api, constraints: { format: 'json' } do
+      resources :folders, except: [:index, :new, :edit] do
+        member do
+          get :items, to: 'folders#index'
+          post :copy
+        end
+      end
+      resources :assets, except: [:new, :edit], path: :files do
+        member do
+          get :content
+          post :copy
+        end
       end
     end
-    resources :assets, except: [:new, :edit], path: :files do
+
+    resources :plans
+    resources :folders
+    resources :assets do
       member do
-        get :content
-        post :copy
+        get :download
       end
     end
-  end
+    resources :payments, only: [:new, :create]
 
-  resources :plans
-  resources :folders
-  resources :assets
-  resources :payments, only: [:new, :create]
-
-  root to: 'home#index'
+    root to: 'home#index'
 end

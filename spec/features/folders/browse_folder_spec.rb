@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-feature "Users" do
+feature "Folder" do
   include Warden::Test::Helpers
 
   let!(:user) { create(:user) }
   let!(:folder) { create(:folder, user: user) }
 
-  scenario "uploading an asset", js: true do
+  scenario "browsing folders", js: true do
     login_as(user)
     visit root_path
     find("#folder-#{folder.id}").click
