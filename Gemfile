@@ -7,6 +7,12 @@ gem 'thin', '~> 1.6.2'
 gem 'unicorn'
 gem 'foreman'
 
+# Deployement
+gem 'capistrano'
+gem 'capistrano-rvm'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
+
 # MySQL adapter
 gem 'mysql2'
 

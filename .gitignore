@@ -17,7 +17,7 @@
 
 *.swp
 ./**/.keep
-Gemfile.lock
+dump.rdb
 
 /.vagrant
 .env
