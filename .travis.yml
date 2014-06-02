@@ -7,7 +7,7 @@ before_script:
     - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
     - mysql -e 'create database cubbyhole_test;'
     - 'npm install -g bower'
-    - 'rake bower:install'
+    - 'bin/rake bower:install'
     - 'bin/rake db:migrate RAILS_ENV=test'
 env:
   global:
