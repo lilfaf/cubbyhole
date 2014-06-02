@@ -74,3 +74,10 @@ group :test do
   gem 'oauth2', '~> 0.9.3'
   gem 'poltergeist', '~> 1.5.0'
 end
+
+group :development do
+  gem 'quiet_assets'
+  gem 'meta_request'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end

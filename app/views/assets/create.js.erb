@@ -1,5 +1,5 @@
 <% if @asset.persisted? %>
-  $("#content-list").append("<%= j render partial: 'folders/row', object: @asset, as: :item  %>");
+  $("#content-list").prepend("<%= j render partial: 'folders/row', object: @asset, as: :item  %>");
 <% else %>
   $("#file-<%= params[:unique_id] %> .progress").replaceWith("<small class='error radius'><%= @asset.errors.full_messages.join(', ') %></small>")
 <% end %>

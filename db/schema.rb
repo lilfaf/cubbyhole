@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517162842) do
+ActiveRecord::Schema.define(version: 20140602174113) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20140517162842) do
   add_index "assets", ["name"], name: "index_assets_on_name", using: :btree
   add_index "assets", ["user_id", "processed"], name: "index_assets_on_user_id_and_processed", using: :btree
   add_index "assets", ["user_id"], name: "index_assets_on_user_id", using: :btree
+
+  create_table "emails", force: true do |t|
+    t.string   "body"
+    t.integer  "share_link_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "folders", force: true do |t|
     t.string   "name"
@@ -116,6 +123,15 @@ ActiveRecord::Schema.define(version: 20140517162842) do
   end
 
   add_index "plans", ["name"], name: "index_plans_on_name", unique: true, using: :btree
+
+  create_table "share_links", force: true do |t|
+    t.string   "token"
+    t.datetime "expires_at"
+    t.integer  "asset_id"
+    t.integer  "sender_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
