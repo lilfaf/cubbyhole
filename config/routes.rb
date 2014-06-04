@@ -44,4 +44,6 @@ Cubbyhole::Application.routes.draw do
     resources :payments, only: [:new, :create]
 
     root to: 'home#index'
+    match '/features', to: 'home#features', via: :get
+    match '/prices', to: 'home#prices', via: :get
 end
