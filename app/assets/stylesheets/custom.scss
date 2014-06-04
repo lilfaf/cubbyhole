@@ -1329,16 +1329,25 @@ table tr td:first-child {
 }
 
 table tr td:last-child {
-  width: 30px;
+  width: 80px;
+
+  a {
+    float: right;
+    margin-left: 10px;
+  }
 
   .close {
     visibility: hidden;
     color: #ddd;
-    font-size: 25px;
+    font-size: 30px;
 
     &:hover {
       color: gray;
     }
+  }
+
+  .share {
+    font-size: 24px;
   }
 }
 
@@ -1359,4 +1368,14 @@ table tr td:last-child {
       background: #333333 !important;
     }
   }
+}
+
+.fi-share:before {
+  margin-top: 6px;
+}
+
+.profile {
+  width: 700px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
