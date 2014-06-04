@@ -33,6 +33,10 @@ class AssetsController < ApplicationController
     redirect_to @asset.asset_url(query: {'response-content-disposition' => 'attachment'})
   end
 
+  def shared
+    @asset = ShareLink.asset_for_token(params[:token])
+  end
+
   private
 
   def load_parent_folder

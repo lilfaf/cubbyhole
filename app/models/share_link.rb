@@ -17,6 +17,12 @@ class ShareLink < ActiveRecord::Base
     link.asset
   end
 
+  def self.create_with_emails(params)
+    #todo
+    #emails.split(/,\s*/).each do |email|
+    #end
+  end
+
   private
 
   def set_default_expiration_delay
