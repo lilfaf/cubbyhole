@@ -35,6 +35,8 @@ gem 'active_model_serializers', '~> 0.9.0.alpha1'
 
 # Admin
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'chartkick'
+gem 'groupdate'
 
 # Assets
 gem 'sass-rails', '~> 4.0.0'

@@ -10,7 +10,11 @@ Climate](https://codeclimate.com/github/lilfaf/cubbyhole.png)](https://codeclima
 
 ### Prerequisite
 
-- MySQL
+- MySQL (With TimeZone support)
+
+```bash
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql
+```
 - NodeJS
 - Redis
 - Ruby > 1.9.3

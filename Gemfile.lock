@@ -110,6 +110,7 @@ GEM
       mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chartkick (1.2.4)
     cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -192,6 +193,8 @@ GEM
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
+    groupdate (2.1.1)
+      activerecord (>= 3.0.0)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -409,6 +412,7 @@ DEPENDENCIES
   capistrano-rvm
   capybara (~> 2.2.1)
   carrierwave (~> 0.10.0)
+  chartkick
   coffee-rails (~> 4.0.0)
   coveralls
   database_cleaner (~> 1.2.0)
@@ -422,6 +426,7 @@ DEPENDENCIES
   foundation-rails
   foundation_rails_helper!
   gon (~> 5.0.4)
+  groupdate
   jquery-rails
   meta_request
   minitest
