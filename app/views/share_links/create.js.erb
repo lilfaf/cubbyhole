@@ -1,0 +1,6 @@
+<% if @share_link.persisted? %>
+$('#main-modal').foundation('reveal', 'close');
+$('<div class="alert-box success" data-alert="">Share link sent successfully.<a class="close" href="#">×</a></div>').insertAfter('.top-bar')
+<% else %>
+
+<% end %>

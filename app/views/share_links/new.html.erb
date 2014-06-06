@@ -1,0 +1,7 @@
+<h1>Share with your friends</h1>
+<a class="close-reveal-modal">&#215;</a>
+<%= form_for @share_link, remote: true do |f| %>
+  <%= f.hidden_field :asset_id, value: @asset.id if @asset %>
+  <%= f.hidden_field :emails_list, id: 'select-emails', value: '', data: { placeholder: 'Enter some emails here'} %>
+  <%= f.submit %>
+<% end %>

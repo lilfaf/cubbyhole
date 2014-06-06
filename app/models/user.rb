@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :plan
   has_many :folders, dependent: :destroy
   has_many :assets, dependent: :destroy
+  has_many :share_links, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 

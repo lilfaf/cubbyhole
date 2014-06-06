@@ -39,9 +39,11 @@ Cubbyhole::Application.routes.draw do
     resources :assets do
       member do
         get :download
+        get :shared
       end
     end
     resources :payments, only: [:new, :create]
+    resources :share_links
 
     root to: 'home#index'
     match '/features', to: 'home#features', via: :get
