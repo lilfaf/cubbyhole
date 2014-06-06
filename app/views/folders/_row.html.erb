@@ -2,9 +2,11 @@
   <td><%= thumbnail_for(item) %></td>
   <td><%= link_to item.name, (item.is_a?(Folder) ? folder_path(item) : download_asset_path(item)) %></td>
   <td>
-  <%= link_to nil, class: 'close share large-icon left', data: { "reveal-ajax" => new_folder_path(parent_id: @folder), "reveal-id" => "main-modal" } do %>
+    <% if item.is_a?(Asset) %>
+    <%= link_to nil, class: 'close share large-icon left', data: { "reveal-ajax" => new_share_link_path(asset_id: item.id), "reveal-id" => "main-modal" } do %>
       <i class="fi-share"></i>
     <% end %>
-    <%= link_to '×', polymorphic_path(item), class: 'close large-icon left', data: { confirm: "Are you sure?" }, method: :delete, remote: true %>
+    <% end %>
+    <%= link_to '×', polymorphic_path(item), class: 'close large-icon right', data: { confirm: "Are you sure?" }, method: :delete, remote: true %>
   </td>
 </tr>

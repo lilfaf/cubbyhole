@@ -44,6 +44,7 @@ gem 'jquery-rails'
 gem 'foundation-icons-sass-rails'
 gem 'bower-rails', '~> 0.7.2'
 gem 'gon', '~> 5.0.4'
+gem 'select2-rails'
 
 # Uploads
 gem 'unf'

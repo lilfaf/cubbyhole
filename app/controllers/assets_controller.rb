@@ -1,7 +1,7 @@
 class AssetsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:shared, :download]
   before_filter :load_parent_folder, only: [:new, :create]
-  before_filter :load_asset, only: [:download, :destroy]
+  before_filter :load_asset, only: [:destroy]
 
   def show
   end
@@ -30,11 +30,13 @@ class AssetsController < ApplicationController
   end
 
   def download
+    @asset = Asset.find(params[:id])
     redirect_to @asset.asset_url(query: {'response-content-disposition' => 'attachment'})
   end
 
   def shared
     @asset = ShareLink.asset_for_token(params[:token])
+    render layout: 'cubbyhole'
   end
 
   private

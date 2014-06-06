@@ -6,6 +6,7 @@
 #= require parallax/deploy/parallax
 #= require parallax/deploy/jquery.parallax
 #= require websockets
+#= require select2
 #= require_tree
 
 jQuery ->

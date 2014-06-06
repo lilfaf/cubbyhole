@@ -3,7 +3,7 @@ require 'errors'
 class ShareLink < ActiveRecord::Base
   belongs_to :sender, class_name: 'User'
   belongs_to :asset
-  has_many :emails
+  has_many :emails, autosave: true
 
   before_save :set_default_expiration_delay
   before_save :generate_token
@@ -18,9 +18,12 @@ class ShareLink < ActiveRecord::Base
   end
 
   def self.create_with_emails(params)
-    #todo
-    #emails.split(/,\s*/).each do |email|
-    #end
+    emails = params.delete(:emails_list)
+    new(params) do |link|
+      emails.split(/,/).each do |email|
+        link.emails << Email.find_or_initialize_by(body: email)
+      end
+    end
   end
 
   private
