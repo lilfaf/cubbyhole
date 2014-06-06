@@ -7,78 +7,131 @@
 
 </div>
 
-<div class="row">
-  <br>
-  <h1>Why you'll love cubbyhole</h1>
+<div class="features">
+  <div class="row">
+    <h1>Why you'll love cubbyhole</h1><br><br><br>
+  </div>
+  <div class="row spec">
+    <div class="large-2 columns banner-image">
+        <%= image_tag("locked-icon.png", alt: "locked") %>
+    </div>
+    <div class="large-10 columns banner-info">
+      <h2>Secure</h2>
+      <p>
+        Our best security engineers work every second to keep your data away from a malicious eye. NSA will never know.<br>
+      </p>
+    </div>
+  </div>
+  <div class="row spec">
+    <div class="large-2 columns banner-image">
+        <%= image_tag("contact-icon.png", alt: "contact") %>
+    </div>
+    <div class="large-10 columns banner-info">
+      <h2>Share</h2>
+      <p>
+        Share your data with your friends and family via a secure link. They do not even need to be registered.<br>
+      </p>
+    </div>
+  </div>
+  <div class="row spec">
+    <div class="large-2 columns banner-image">
+        <%= image_tag("cloud-icon.png", alt: "cloud") %>
+    </div>
+    <div class="large-10 columns banner-info">
+      <h2>Never lose your files again</h2>
+      <p>
+        Cubbyhole is a cloud hosted file storage. Let us handle the pain of tracking your files. Quality of service is our priority, you will never lose a file.<br>
+      </p>
+    </div>
+  </div>
+  <div class="row spec">
+    <div class="large-2 columns banner-image">
+        <%= image_tag("browser-icon.png", alt: "browser") %>
+    </div>
+    <div class="large-10 columns banner-info">
+      <h2>Everywhere at any moment</h2>
+      <p>
+        Access to your data all around the world. Cubbyhole provides you a mobile app, web client or desktop software.<br>
+      </p>
+      <%= link_to "Download for Windows", new_user_registration_url, class: "button radius large" %>
+      <p><em>Desktop client is available on Win32 and Unix System</em></p>
+    </div>
+  </div>
+</div>
 
-  <ul class="small-block-grid-3 features">
+<div class="row">
+  <hr></hr>
+  <h1>Prices</h1>
+
+  <ul class="small-block-grid-4 features">
+    <% @plans.each do |plan| %>
     <li>
-      <%= image_tag("network_64.png", alt: "network") %>
-      <h6>Access</h6>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit, nisl vel pulvinar suscipit, ligula sapien fermentum orci, ut luctus erat elit id diam.
-      </p>
+      <ul class="pricing-table">
+          <li class="title"><%= plan.name.capitalize %></li>
+          <li class="price">$ <%= plan.price.to_i %></li>
+          <li class="bullet-item">
+            Storage space <br><br>
+            <strong>
+              <% if plan.max_storage_space != 0 %>
+                <%= plan.max_storage_space / 1000 %> Go
+              <% else %>
+                Unlimited
+              <% end %>
+            </strong>
+          </li>
+          <li class="bullet-item">
+            Upload speed <br><br>
+            <strong>
+              <% if plan.max_bandwidth_up != 0 %>
+                <% if plan.max_bandwidth_up >= 1000 %>
+                  <%= plan.max_bandwidth_up / 1000 %> Mo/s
+                <% else %>
+                  <%= plan.max_bandwidth_up %> Ko/s
+                <% end %>
+              <% else %>
+                Unlimited
+              <% end %>
+            </strong>
+          </li>
+          <li class="bullet-item">
+            Download speed <br><br>
+            <strong>
+              <% if plan.max_bandwidth_down != 0 %>
+                <% if plan.max_bandwidth_down >= 1000 %>
+                  <%= plan.max_bandwidth_down / 1000 %> Mo/s
+                <% else %>
+                  <%= plan.max_bandwidth_down %> Ko/s
+                <% end %>
+              <% else %>
+                Unlimited
+              <% end %>
+            </strong>
+          </li>
+          <li class="bullet-item">
+            Shared links per day <br><br>
+            <strong>
+              <% if plan.daily_shared_links_quota != 0 %>
+                <% if plan.daily_shared_links_quota >= 1000 %>
+                  <%= plan.daily_shared_links_quota / 1000 %> Go
+                <% else %>
+                  <%= plan.daily_shared_links_quota %> Mo
+                <% end %>
+              <% else %>
+                Unlimited
+              <% end %>
+            </strong>
+          </li>
+          <% if plan.name == 'free' %>
+            <li class="cta-button"><%= link_to "Go for free", new_user_registration_url, class: "button radius" %></li>
+          <% else %>
+            <li class="cta-button"><%= link_to "Buy now", new_user_registration_url, class: "button radius" %></li>
+          <% end %>
+      </ul>
     </li>
-    <li>
-      <%= image_tag("padlock_64.png", alt: "padlock") %>
-      <h6>Secure</h6>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit, nisl vel pulvinar suscipit, ligula sapien fermentum orci, ut luctus erat elit id diam.
-      </p>
-    </li>
-    <li>
-      <%= image_tag("share_64.png", alt: "share") %>
-      <h6>Share</h6>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit, nisl vel pulvinar suscipit, ligula sapien fermentum orci, ut luctus erat elit id diam.
-      </p>
-    </li>
+    <% end %>
   </ul>
 </div>
 
-<div class="devices">
-  <div class="row">
-    <h1>Everywhere at any moment</h1>
-    <%= link_to "Sign up now for free!", new_user_registration_url, class: "button radius large" %>
-  </div>
-</div>
-<!--
-<div class="row">
-  <div class="large-4 columns">
-    <ul class="pricing-table">
-      <li class="title">Discover</li>
-      <li class="price">Free</li>
-      <li class="description">An awesome description</li>
-      <li class="bullet-item">1 Database</li>
-      <li class="bullet-item">5GB Storage</li>
-      <li class="bullet-item">20 Users</li>
-      <li class="cta-button"><%= link_to "Buy now", new_user_registration_url, {class: "button"} %></li>
-    </ul>
-  </div>
-  <div class="large-4 columns">
-    <ul class="pricing-table">
-      <li class="title">Premium</li>
-      <li class="price">$9.99</li>
-      <li class="description">An awesome description</li>
-      <li class="bullet-item">1 Database</li>
-      <li class="bullet-item">5GB Storage</li>
-      <li class="bullet-item">20 Users</li>
-      <li class="cta-button"><%= link_to "Buy now", new_user_registration_url, {class: "button"} %></li>
-    </ul>
-  </div>
-  <div class="large-4 columns">
-    <ul class="pricing-table">
-      <li class="title">Enterprise</li>
-      <li class="price">$19.99</li>
-      <li class="description">An awesome description</li>
-      <li class="bullet-item">1 Database</li>
-      <li class="bullet-item">5GB Storage</li>
-      <li class="bullet-item">20 Users</li>
-      <li class="cta-button"><%= link_to "Buy now", new_user_registration_url, {class: "button"} %></li>
-    </ul>
-  </div>
-</div>
--->
 <%= content_for :js do %>
   <script>$('#scene').parallax();</script>
 <% end %>

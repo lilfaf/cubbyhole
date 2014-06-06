@@ -8,5 +8,4 @@
 #= require websockets
 #= require_tree
 
-jQuery ->
-  $(document).foundation()
+$(document).foundation()
