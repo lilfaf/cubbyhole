@@ -3,5 +3,8 @@
 <h1>User board</h1>
 <%= line_chart User.group_by_month(:created_at, time_zone: "Europe/Paris").count %>
 
-<h1>Plans board</h1>
-<%= pie_chart Plan.group(:name).count %>
+<h1>Plans chart repartition</h1>
+<%= pie_chart User.joins(:plan).group("plans.name").count %>
+
+<h1>Users geo repartition</h1> 
+need country field on user model
