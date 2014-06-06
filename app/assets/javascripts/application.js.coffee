@@ -9,5 +9,4 @@
 #= require select2
 #= require_tree
 
-jQuery ->
-  $(document).foundation()
+$(document).foundation()
