@@ -1,10 +1,24 @@
 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<div class="graph">
+	<h3>User</h3>
+	<div class="panel radius"> 
+		<h5>User registration</h5>
+		<hr>
+		<%= line_chart User.group_by_day(:created_at, time_zone: "Europe/Paris").count %>
+	</div>
+	<div class="panel radius"> 
+		<h5>User registration filtered by Plan</h5>
+		<hr>
+		<%= line_chart Plan.all.map{|plan|
+    {name: plan.name, data: plan.users.group_by_day('users.created_at', time_zone: "Europe/Paris").count}
+		} %>
+	</div>
+	<div class="panel radius"> 
+		<h5>Users geo repartition</h5>
+		<hr>
+		<%= geo_chart User.group(:country_code).count, height: "500px" %>
+	</div>
 
-<h1>User board</h1>
-<%= line_chart User.group_by_month(:created_at, time_zone: "Europe/Paris").count %>
-
-<h1>Plans chart repartition</h1>
-<%= pie_chart User.joins(:plan).group("plans.name").count %>
-
-<h1>Users geo repartition</h1> 
-need country field on user model
+	<h3>Plans chart repartition</h3>
+	<%= pie_chart User.joins(:plan).group("plans.name").count, library: {pieHole: 0.5} %>
+</div>

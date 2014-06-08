@@ -1,4 +1,6 @@
 class Plan < ActiveRecord::Base
+	has_many :users
+	
   validates :name, presence: true, uniqueness: true, length: { maximum: 50 }
   validates :price, presence: true
   validates :max_storage_space, presence: true

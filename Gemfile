@@ -38,6 +38,9 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'chartkick'
 gem 'groupdate'
 
+# Data generation
+gem 'faker'
+
 # Assets
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
