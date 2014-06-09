@@ -10,7 +10,10 @@ Climate](https://codeclimate.com/github/lilfaf/cubbyhole.png)](https://codeclima
 
 ### Prerequisite
 
-- MySQL (With TimeZone support. Type in shell 'mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql')
+- MySQL With TimeZone support.
+```bash
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root -p mysql
+```
 - NodeJS
 - Redis
 - Ruby > 1.9.3
@@ -35,6 +38,10 @@ vagrant up
 vagrant ssh
 cd /vagrant
 rspec # run all test!
+```
+### Raven Fake Events
+```bash
+rake raven:test
 ```
 
 Then start the web server
