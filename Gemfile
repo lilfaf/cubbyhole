@@ -70,6 +70,9 @@ gem 'websocket-rails'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'coveralls', require: false
 
+# Monitoring
+gem 'sentry-raven', :git => 'https://github.com/getsentry/raven-ruby.git'
+
 group :test do
   gem 'minitest'
   gem 'rspec-rails', '~> 2.14.1'
