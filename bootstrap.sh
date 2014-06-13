@@ -37,6 +37,9 @@ rvm use 2.0.0 --default
 # install imagemagick
 sudo apt-get -y install imagemagick libmagickwand-dev
 
+# install redis-server
+sudo apt-get install redis-server
+
 # setup rails app
 gem install bundler
 cd /vagrant
