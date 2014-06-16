@@ -35,7 +35,7 @@ class Api::ApiController < ActionController::Base
     render json: { message: t('errors.not_found') }, status: :not_found and return
   end
 
-  def parameter_missing
+  def parameter_missing(exception)
     render json: { message: t('errors.parameter_misssing', param: 'exception.param') }, status: :bad_request and return
   end
 
