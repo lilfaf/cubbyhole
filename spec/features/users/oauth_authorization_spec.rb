@@ -10,11 +10,6 @@ feature 'Oauth authorization' do
     expect(token).not_to be_expired
   end
 
-  scenario 'authentication succeed with username and password' do
-    token = oauth_client.password.get_token(user.username, user.password)
-    expect(token).not_to be_expired
-  end
-
   scenario 'authentication fails' do
     expect{oauth_client.password.get_token(user.email, '123')}.to raise_error(OAuth2::Error)
   end
