@@ -34,6 +34,7 @@ module Cubbyhole
       Devise::ConfirmationsController.layout "devise"
       Devise::UnlocksController.layout "devise"
       Devise::PasswordsController.layout "devise"
+      DeviseController.respond_to :html, :json
     end
   end
 end
