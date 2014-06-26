@@ -112,9 +112,9 @@
             <strong>
               <% if plan.daily_shared_links_quota != 0 %>
                 <% if plan.daily_shared_links_quota >= 1000 %>
-                  <%= plan.daily_shared_links_quota / 1000 %> Go
+                  <%= plan.daily_shared_links_quota %>
                 <% else %>
-                  <%= plan.daily_shared_links_quota %> Mo
+                  <%= plan.daily_shared_links_quota %>
                 <% end %>
               <% else %>
                 Unlimited

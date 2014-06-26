@@ -10,9 +10,10 @@ describe AssetSerializer do
       size: asset.size,
       content_type: asset.content_type,
       etag: asset.etag,
-      url: asset.key,
+      url: asset.asset_url,
       created_at: asset.created_at,
-      updated_at: asset.updated_at
+      updated_at: asset.updated_at,
+      key: asset.key
     }.to_json
   end
 

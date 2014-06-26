@@ -37,7 +37,6 @@ class Asset < ActiveRecord::Base
 
   # Set asset metadata from the direct upload key
   def set_asset_metadata
-    raise key if key
     headers = fog_connection.head_object(CarrierWave::Uploader::Base.fog_directory, upload_data[:path]).headers
 
     self.name = upload_data[:filename]
