@@ -10,7 +10,7 @@
 		<h5>User registration filtered by Plan</h5>
 		<hr>
 		<%= line_chart Plan.all.map{|plan|
-    {name: plan.name, data: plan.users.group_by_day('users.created_at', time_zone: "Europe/Paris").count}
+    		{name: plan.name, data: plan.users.group_by_day('users.created_at', time_zone: "Europe/Paris").count}
 		} %>
 	</div>
 	<div class="panel radius"> 
@@ -19,6 +19,10 @@
 		<%= geo_chart User.group(:country_code).count, height: "500px" %>
 	</div>
 
-	<h3>Plans chart repartition</h3>
-	<%= pie_chart User.joins(:plan).group("plans.name").count, library: {pieHole: 0.5} %>
+	<h3>Plan</h3>
+	<div class="panel radius">
+		<h5>Plans repartition</h5>
+		<hr>
+		<%= pie_chart User.joins(:plan).group("plans.name").count, library: {pieHole: 0.5} %>
+	</div>
 </div>

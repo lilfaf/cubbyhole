@@ -57,7 +57,7 @@ Doorkeeper::Application.create!(name: 'web', redirect_uri: 'urn:ietf:wg:oauth:2.
 
 #faker
 1000.times { |i| User.create!(
-    username: Faker::Internet.user_name << Faker::Internet.domain_suffix << rand(9999),
+    username: Faker::Internet.user_name << Faker::Internet.user_name,
     email: Faker::Internet.email,
     password:'12345678',
     password_confirmation:'12345678',

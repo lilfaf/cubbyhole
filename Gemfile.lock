@@ -10,14 +10,14 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 8b4c1b5ef65ebdf77413bcaa955c0f7badb26ffb
+  revision: 0e0b3694bace985f355135f9628ea7918c3695d2
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
       bourbon
       coffee-rails
       formtastic (~> 2.3.0.rc3)
-      inherited_resources (~> 1.3)
+      inherited_resources (~> 1.4.1)
       jquery-rails
       jquery-ui-rails
       kaminari (~> 0.15)
@@ -32,10 +32,10 @@ GIT
     railroady (1.1.1)
 
 GIT
-  remote: https://github.com/getsentry/raven-ruby.git
-  revision: 84755dd1537195de2275d9677ecd8fc311111d46
+  remote: http://github.com/getsentry/raven-ruby.git
+  revision: 9f8c309c64c4d468d944c1438abac0130fdc6dd1
   specs:
-    sentry-raven (0.9.2)
+    sentry-raven (0.9.3)
       faraday (>= 0.7.6)
       hashie (>= 1.1.0)
       uuidtools
@@ -125,7 +125,7 @@ GEM
       mime-types (>= 1.16)
     celluloid (0.15.2)
       timers (~> 1.1.0)
-    chartkick (1.2.4)
+    chartkick (1.2.5)
     cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -135,6 +135,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    colorize (0.7.3)
     connection_pool (2.0.0)
     coveralls (0.7.0)
       multi_json (~> 1.3)
@@ -152,7 +153,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    docile (1.1.3)
+    docile (1.1.5)
     doorkeeper (1.0.0)
       railties (>= 3.1)
     dotenv (0.11.1)
@@ -164,8 +165,8 @@ GEM
       eventmachine (>= 1.0.0.beta.1)
     erubis (2.7.0)
     eventmachine (1.0.3)
-    excon (0.33.0)
-    execjs (2.0.2)
+    excon (0.37.0)
+    execjs (2.2.0)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.4.1)
@@ -183,9 +184,10 @@ GEM
       fog-core (~> 1.21, >= 1.21.1)
       fog-json
       nokogiri (~> 1.5, >= 1.5.11)
-    fog-brightbox (0.0.2)
-      fog-core
+    fog-brightbox (0.1.0)
+      fog-core (~> 1.22)
       fog-json
+      inflecto
     fog-core (1.22.0)
       builder
       excon (~> 0.33)
@@ -195,45 +197,45 @@ GEM
       net-ssh (>= 2.1.3)
     fog-json (1.0.0)
       multi_json (~> 1.0)
-    foreman (0.63.0)
-      dotenv (>= 0.7)
-      thor (>= 0.13.6)
+    foreman (0.74.0)
+      dotenv (~> 0.11.1)
+      thor (~> 0.19.1)
     formatador (0.2.5)
     formtastic (2.3.0.rc3)
       actionpack (>= 3.0)
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    foundation-rails (5.2.2.0)
+    foundation-rails (5.3.0.1)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
-    groupdate (2.1.1)
-      activerecord (>= 3.0.0)
+    groupdate (2.2.1)
+      activesupport (>= 3)
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
-    hashie (3.0.0)
+    hashie (3.1.0)
     hike (1.2.3)
     hiredis (0.5.2)
     i18n (0.6.9)
+    inflecto (0.0.2)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
       railties (>= 3.1)
-    jquery-rails (3.1.0)
+    jquery-rails (3.1.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (4.2.1)
       railties (>= 3.2.16)
     json (1.8.1)
-    jwt (0.1.13)
-      multi_json (>= 1.5)
-    kaminari (0.15.1)
+    jwt (1.0.0)
+    kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
@@ -246,7 +248,7 @@ GEM
       railties
     mime-types (1.25.1)
     mini_portile (0.6.0)
-    minitest (5.3.4)
+    minitest (5.3.5)
     money (6.1.1)
       i18n (~> 0.6.4)
     multi_json (1.10.1)
@@ -258,22 +260,22 @@ GEM
     net-ssh (2.9.1)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
-    oauth2 (0.9.3)
+    oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
-      jwt (~> 0.1.8)
+      jwt (~> 1.0)
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
     orm_adapter (0.5.0)
-    poltergeist (1.5.0)
+    poltergeist (1.5.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       multi_json (~> 1.0)
       websocket-driver (>= 0.2.0)
     polyamorous (1.0.0)
       activerecord (>= 3.0)
-    polyglot (0.3.4)
-    quiet_assets (1.0.2)
+    polyglot (0.3.5)
+    quiet_assets (1.0.3)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-contrib (1.1.0)
@@ -305,9 +307,9 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.0.0)
-    redis (3.0.7)
-    redis-namespace (1.4.1)
-      redis (~> 3.0.4)
+    redis (3.1.0)
+    redis-namespace (1.5.0)
+      redis (~> 3.0, >= 3.0.4)
     redis-objects (0.9.1)
       redis (>= 3.0.2)
     responders (1.0.0)
@@ -342,7 +344,7 @@ GEM
       thor (~> 0.14)
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
-    sidekiq (3.0.2)
+    sidekiq (3.1.4)
       celluloid (>= 0.15.2)
       connection_pool (>= 2.0.0)
       json
@@ -369,10 +371,10 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sshkit (1.4.0)
+    sshkit (1.5.1)
+      colorize
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
-      term-ansicolor
     temple (0.6.7)
     term-ansicolor (1.3.0)
       tins (~> 1.0)
@@ -381,16 +383,16 @@ GEM
       eventmachine (>= 1.0.0)
       rack (>= 1.0.0)
     thor (0.19.1)
-    thread_safe (0.3.3)
+    thread_safe (0.3.4)
     tilt (1.4.1)
     timers (1.1.0)
     tins (1.3.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (1.1.0)
+    tzinfo (1.2.1)
       thread_safe (~> 0.1)
-    uglifier (2.5.0)
+    uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)
