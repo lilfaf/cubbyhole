@@ -26,6 +26,12 @@ GIT
       sass-rails
 
 GIT
+  remote: git://github.com/preston/railroady.git
+  revision: 8e6f22e9a9f40234c6274c3d205530c54ada4214
+  specs:
+    railroady (1.1.1)
+
+GIT
   remote: https://github.com/getsentry/raven-ruby.git
   revision: 84755dd1537195de2275d9677ecd8fc311111d46
   specs:
@@ -450,6 +456,7 @@ DEPENDENCIES
   oauth2 (~> 0.9.3)
   poltergeist (~> 1.5.0)
   quiet_assets
+  railroady!
   rails (= 4.1.1)
   rmagick
   rspec-rails (~> 2.14.1)

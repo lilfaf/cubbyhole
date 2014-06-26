@@ -1,0 +1,16 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true]
+	"Asset" [shape=Mrecord, label="{Asset|id :integer\lname :string\lfolder_id :integer\luser_id :integer\lasset :string\lkey :string\lsize :float\lcontent_type :string\letag :string\lprocessed :boolean\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Email" [shape=Mrecord, label="{Email|id :integer\lbody :string\lshare_link_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Folder" [shape=Mrecord, label="{Folder|id :integer\lname :string\luser_id :integer\lparent_id :integer\llft :integer\lrgt :integer\ldepth :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Plan" [shape=Mrecord, label="{Plan|id :integer\lname :string\lprice :float\lmax_storage_space :integer\lmax_bandwidth_up :integer\lmax_bandwidth_down :integer\ldaily_shared_links_quota :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"ShareLink" [shape=Mrecord, label="{ShareLink|id :integer\ltoken :string\lexpires_at :datetime\lasset_id :integer\lsender_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"User" [shape=Mrecord, label="{User|id :integer\lemail :string\lencrypted_password :string\lreset_password_token :string\lreset_password_sent_at :datetime\lremember_created_at :datetime\lsign_in_count :integer\lcurrent_sign_in_at :datetime\llast_sign_in_at :datetime\lcurrent_sign_in_ip :string\llast_sign_in_ip :string\lcreated_at :datetime\lupdated_at :datetime\lusername :string\lplan_id :integer\ladmin :boolean\lavatar :string\lcountry_code :string\l}"]
+	"Folder" -> "Folder" [label="children", arrowtail=odot, arrowhead=crow, dir=both color="#1D51E4"]
+	"Folder" -> "Asset" [arrowtail=odot, arrowhead=crow, dir=both color="#530597"]
+	"Plan" -> "User" [arrowtail=odot, arrowhead=crow, dir=both color="#456A35"]
+	"ShareLink" -> "Email" [arrowtail=odot, arrowhead=crow, dir=both color="#4A2F48"]
+	"User" -> "Folder" [arrowtail=odot, arrowhead=crow, dir=both color="#AE1B56"]
+	"User" -> "Asset" [arrowtail=odot, arrowhead=crow, dir=both color="#B3F49A"]
+	"User" -> "ShareLink" [arrowtail=odot, arrowhead=crow, dir=both color="#5D536B"]
+}
